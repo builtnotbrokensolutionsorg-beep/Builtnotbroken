@@ -1,76 +1,408 @@
-// Vercel serverless function — handles contact & partner form submissions
-// For email delivery, add RESEND_API_KEY to Vercel Environment Variables (free at resend.com)
-// Without it, form submissions still return success (no email sent).
+BUILT NOT BROKEN
 
-export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+Live AI Quoting · Calgary & Area
+BUILT
+NOT BROKEN
+Solutions Inc. · Calgary, AB
 
-  if (req.method === 'OPTIONS') return res.status(200).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+Professional subtrade services across Calgary and surrounding areas. Instant AI-powered quotes for every trade.
 
-  const { type, name, company, phone, email, message, trade, areas, plan } = req.body;
-  const TO = 'builtnotbrokensolutions.org@gmail.com';
+📞 403-470-9749
+⚡ Get Instant Quote
+View All Trades
+11+
+Trades Covered
+YYC
+Calgary & Area
+2026
+AB Live Rates
+AI
+Auto Quotes
+What We Do
+All Major
+Subtrades
+Licensed, insured and experienced across every major trade discipline. Serving Calgary and all surrounding communities.
 
-  let subject, html;
+🧱
+INSURED
+Stucco / EIFS
+$48–$72 /hr · 2026 AB Rate
+Full stucco and EIFS repair & installation. Sand & cement traditional systems and modern acrylic/foam board assemblies.
+Sand & Cement — Scratch Coat
+Crack repair & patching
+Full scratch coat reapplication
+Key coat bonding
+Lath & wire replacement
+Corner bead repair
+Moisture damage remediation
+Sand & Cement — Brown Coat
+Brown coat crack fill
+Brown coat re-float
+Delamination repair
+Thickness correction
+Control joint repair
+Settlement crack repair
+Acrylic Stucco — All Repairs
+Acrylic finish crack repair
+Colour-match patching
+Texture matching (sand/dash/smooth)
+Acrylic recoat & refinish
+Hail damage repair
+Impact & hole repair
+Efflorescence treatment
+EIFS — All Repairs
+EIFS panel crack repair
+Foam board replacement
+Base coat reapplication
+Mesh & reinforcement repair
+Water intrusion repair
+Window & door flashing repair
+Full panel replacement
+Caulking & sealant replacement
+Finish coat colour match
+🪨
+INSURED
+Masonry
+$50–$75 /hr · 2026 AB Rate
+Brick, block, stone, and mortar work. New construction and repair of all masonry assemblies.
+Brick repair & repointing
+Tuckpointing
+Block wall repair
+Stone pointing
+Chimney repair
+Retaining walls
+Parging
+Foundation parging
+Efflorescence treatment
+Freeze-thaw crack repair
+Mortar colour match
+New brick installation
+⚡
+LICENSED
+Electrical
+$58–$82 /hr · 2026 AB Rate
+Panel upgrades, rough-in wiring, service upgrades, EV chargers, pot lights, code compliance.
+Panel upgrades
+Rough-in wiring
+EV chargers
+Pot lights
+Service upgrades
+Code compliance
+🔧
+LICENSED
+Plumbing
+$60–$85 /hr · 2026 AB Rate
+Rough-in, drain & vent, fixtures, water heaters, gas lines, backflow preventers.
+Rough-in
+Drain & vent
+Water heaters
+Gas lines
+Backflow preventers
+Fixtures
+❄️
+CERTIFIED
+HVAC
+$52–$75 /hr · 2026 AB Rate
+Furnace, A/C, HRV, ductwork, radiant heat, boilers — designed for Alberta's extreme climate.
+Furnace
+A/C
+HRV
+Ductwork
+Radiant heat
+Boilers
+🪵
+INSURED
+Framing
+$42–$58 /hr · 2026 AB Rate
+Wood & steel framing, structural rough carpentry, beam installations, additions.
+Wood framing
+Steel framing
+Beam install
+Additions
+Structural
+🏠
+INSURED
+Drywall
+$38–$52 /hr · 2026 AB Rate
+Supply & install, taping, mudding, texture, Level 5 finish, soundproof assemblies.
+Supply & install
+Taping & mudding
+Level 5 finish
+Texture
+Soundproof
+🏗️
+INSURED
+Roofing
+$40–$60 /hr · 2026 AB Rate
+Asphalt shingles, flat roofing, TPO, repairs, insurance claims, hail damage restoration.
+Asphalt shingles
+Flat roofing
+TPO
+Hail damage
+Insurance claims
+🧱
+INSURED
+Concrete
+$45–$65 /hr · 2026 AB Rate
+Foundations, flatwork, driveways, exposed aggregate, ICF, frost walls.
+Foundations
+Flatwork
+Driveways
+Exposed aggregate
+ICF
+Frost walls
+🎨
+INSURED
+Painting
+$35–$50 /hr · 2026 AB Rate
+Interior & exterior, commercial repaint, spray finish, staining, epoxy floors.
+Interior
+Exterior
+Spray finish
+Staining
+Epoxy floors
+🟫
+INSURED
+Flooring
+$32–$48 /hr · 2026 AB Rate
+Hardwood, LVP, tile, carpet, subfloor repair, transitions, radiant in-floor heating.
+Hardwood
+LVP
+Tile
+Carpet
+Subfloor repair
+In-floor heat
+🌿
+INSURED
+Landscaping
+$38–$55 /hr · 2026 AB Rate
+Grading, drainage, retaining walls, interlocking, sod, irrigation — for Calgary's freeze-thaw conditions.
+Grading
+Drainage
+Interlocking
+Sod
+Irrigation
+Retaining walls
+Where We Work
+Calgary &
+Surrounding Areas
+We cover the full Calgary metropolitan area and all major satellite communities within a 100km radius.
 
-  if (type === 'contractor') {
-    subject = `🏗️ New Partner: ${name} — ${trade}`;
-    html = `
-      <h2 style="font-family:sans-serif">New Contractor Registration</h2>
-      <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">
-        <tr><td style="padding:6px 12px;color:#888">Name</td><td style="padding:6px 12px"><strong>${name}</strong></td></tr>
-        <tr><td style="padding:6px 12px;color:#888">Company</td><td style="padding:6px 12px">${company || '—'}</td></tr>
-        <tr><td style="padding:6px 12px;color:#888">Phone</td><td style="padding:6px 12px"><a href="tel:${phone}">${phone}</a></td></tr>
-        <tr><td style="padding:6px 12px;color:#888">Email</td><td style="padding:6px 12px"><a href="mailto:${email}">${email}</a></td></tr>
-        <tr><td style="padding:6px 12px;color:#888">Trade</td><td style="padding:6px 12px">${trade}</td></tr>
-        <tr><td style="padding:6px 12px;color:#888">Areas</td><td style="padding:6px 12px">${areas || '—'}</td></tr>
-        <tr><td style="padding:6px 12px;color:#888">Plan</td><td style="padding:6px 12px">${plan === 'per-lead' ? '$100 Per Lead' : '8% Revenue Share'}</td></tr>
-      </table>
-      <p style="font-family:sans-serif;font-size:12px;color:#888;margin-top:24px">Built Not Broken Solutions — builtnotbrokensolutions.org</p>
-    `;
-  } else {
-    subject = `📩 Contact: ${name}`;
-    html = `
-      <h2 style="font-family:sans-serif">New Contact Message</h2>
-      <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">
-        <tr><td style="padding:6px 12px;color:#888">Name</td><td style="padding:6px 12px"><strong>${name}</strong></td></tr>
-        <tr><td style="padding:6px 12px;color:#888">Phone</td><td style="padding:6px 12px">${phone ? `<a href="tel:${phone}">${phone}</a>` : '—'}</td></tr>
-        <tr><td style="padding:6px 12px;color:#888">Email</td><td style="padding:6px 12px">${email ? `<a href="mailto:${email}">${email}</a>` : '—'}</td></tr>
-      </table>
-      <h3 style="font-family:sans-serif;margin-top:20px">Message</h3>
-      <p style="font-family:sans-serif;font-size:14px;line-height:1.6">${(message || '').replace(/\n/g, '<br>')}</p>
-      <p style="font-family:sans-serif;font-size:12px;color:#888;margin-top:24px">Built Not Broken Solutions — builtnotbrokensolutions.org</p>
-    `;
-  }
+Calgary (All Quadrants)
+City Core
+Airdrie
+~30 km N
+Cochrane
+~45 km NW
+Chestermere
+~20 km E
+Okotoks
+~40 km S
+Strathmore
+~50 km E
+High River
+~60 km S
+Rocky View County
+Surrounding
+Foothills County
+South
+Why Choose Us
+Built Different.
+Built to Last.
+Transparent pricing, licensed tradespeople, and real accountability on every job.
 
-  const resendKey = process.env.RESEND_API_KEY;
-  if (!resendKey) {
-    // No email configured — still acknowledge receipt
-    return res.status(200).json({ success: true, note: 'received (email not configured)' });
-  }
+⚡
+Instant AI Quotes
+Live Alberta-rate estimates for every trade in seconds — no waiting 3 days for a callback.
+📋
+Licensed & Insured
+All trades carry full Alberta licensing, WCB coverage, and $2M liability insurance.
+🏗️
+Calgary Born
+Locally owned and operated. We know Calgary's soil conditions, climate, and permit requirements.
+💰
+Transparent Pricing
+No hidden fees. Labour + materials broken out clearly. You see exactly what you're paying for.
+🔒
+Warranty on Work
+All trades backed with a minimum 1-year workmanship warranty. We stand behind our builds.
+📱
+Fast Response
+Same-day callback on all leads. Emergency service available for urgent situations.
+The Process
+How It
+Works
+From first contact to completed project — here's exactly what to expect when you work with Built Not Broken.
 
-  try {
-    const r = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${resendKey}`
-      },
-      body: JSON.stringify({
-        from: 'Built Not Broken <onboarding@resend.dev>',
-        to: TO,
-        reply_to: email || undefined,
-        subject,
-        html
-      })
-    });
+01
+⚡
+Get Your AI Quote
+Fill in your project details — trade, location, square footage — and our AI generates a live Calgary-rate estimate in seconds. No phone tag, no waiting.
+02
+📞
+We Call You Back
+Within one business day, we review your quote, confirm scope, and connect you with the right licensed crew for your trade. Same-day callback for urgent work.
+03
+📋
+Permits & Schedule
+We pull all required Calgary permits, lock in your start date, and give you a clear project timeline before any work begins. No surprises.
+04
+🏗️
+Project Starts
+Licensed, WCB-covered tradespeople arrive on time and complete the work. Final walkthrough, invoice, and 1-year workmanship warranty provided at completion.
+Partner Program
+Contractor
+Portal
+Built Not Broken generates qualified leads daily across all trades. Partner with us and we send you pre-qualified customers — you only pay when you get a lead.
 
-    if (r.ok) return res.status(200).json({ success: true });
-    const err = await r.json();
-    return res.status(500).json({ error: err.message || 'Email send failed' });
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
-  }
-}
+Per-Lead Pricing
+$100 / qualified lead
+Flat fee per lead sent to you. No monthly fees, no commitments. Only pay when we send you a customer.
+
+Pre-qualified leads — customer already has AI estimate
+Full contact info: name, phone, email, project details
+Leads matched to your trade specialty & service area
+No lead = no charge. Simple.
+First 3 leads free — try before you commit
+Revenue Share
+8% / of job value
+Pay a percentage of the final job value instead of a flat fee. Better for large projects.
+
+No upfront cost per lead
+8% of invoice value on completed jobs
+Best for jobs over $2,000
+Monthly invoicing — pay once a month
+Full lead details provided upfront
+Register Your Trade
+Fill in your details and trade specialty. We'll match incoming leads to you and send them directly to your email or phone.
+
+Your Name
+Full name
+Company Name
+ABC Contracting Ltd.
+Phone
+403-xxx-xxxx
+Email
+you@company.com
+Trade Specialty
+
+— Select Your Trade —
+Service Areas
+e.g. Calgary NW, Airdrie, Cochrane
+Preferred Plan
+
+$100 Per Lead (Flat Fee)
+Register as Partner Contractor →
+What Clients Say
+Real Results.
+Real Projects.
+Calgary homeowners and general contractors who've used Built Not Broken for their subtrade work.
+
+★★★★★
+"Got an AI quote in under a minute, crew was on site within the week. Stucco repair matched perfectly — you can't tell where the old coat ends. Highly recommend."
+
+Mark T.
+Calgary NW — Homeowner
+Stucco/EIFS
+★★★★★
+"Used them for electrical and drywall on a basement suite. One call, two trades, everything coordinated. Pricing was exactly what the AI quote said — no surprises."
+
+Sarah L.
+Airdrie — Investment Property Owner
+Electrical · Drywall
+★★★★★
+"As a general, I've tried a dozen lead platforms. Built Not Broken sends pre-qualified leads with actual project details and budgets — exactly what I need before I return a call."
+
+Jordan M.
+Cochrane — General Contractor
+Partner Program
+★★★★★
+"Masonry repair on our chimney — done right, warranted, and within two weeks of calling. The instant quote helped us plan the budget before we even picked up the phone."
+
+Chris A.
+Calgary SE — Homeowner
+Masonry
+Common Questions
+FAQ
+Quick answers to the questions we hear most often.
+
+How accurate are the AI quotes?
+▾
+Are you licensed and insured?
+▾
+Do you pull permits?
+▾
+How quickly can you start?
+▾
+What are your payment terms?
+▾
+What's covered by your warranty?
+▾
+Get In Touch
+Let's Talk
+About Your Project
+Ready to Build?
+📞
+Phone
+403-470-9749
+📧
+Email
+builtnotbrokensolutions.org@gmail.com
+📍
+Location
+Calgary, Alberta & Surrounding Areas
+🕐
+Hours
+Mon–Fri 7AM–6PM · Sat 8AM–4PM
+Emergency line available 24/7
+Payment: e-Transfer and cheque. Payment details provided with your quote.
+Your Name
+Phone
+Email
+Tell us about your project...
+Send Message →
+Instant Pricing
+AI Quote
+Engine
+Live Calgary-rate estimates powered by AI. Fill in your project and get a full breakdown in seconds.
+
+Client Name
+Full name
+Phone
+403-xxx-xxxx
+Email
+you@email.com
+Project Type
+
+— Select Project Type —
+Location / Area
+
+Calgary NW
+Square Footage
+e.g. 1200
+Select Trades Needed
+Project Notes
+Describe the work needed, repair types, access issues, etc.
+⚡ Generate Live Quote
+📐
+Fill in your details and select trades. AI generates live Calgary-rate quotes per trade instantly.
+CRM
+Lead
+Pipeline
+Every quote submitted is saved here. Stucco & Masonry leads are flagged for Evan. Other trades are flagged for partner contractors.
+
+Clear All Leads
+Client	Project Type	Area	Trades	Sq Ft	Est. Value	Routing	Status	Date
+No leads yet — submit a quote to populate your pipeline.
+BUILT NOT BROKEN Solutions
+Calgary's trusted subtrade contractor & lead platform. Licensed, insured, and committed to quality on every project.
+
+Trades
+Service Areas
+Partner Program
+Contact
+403-470-9749
+builtnotbrokensolutions.org@gmail.com
+© 2026 Built Not Broken Solutions · Calgary, Alberta · AI quotes use live 2026 Alberta labour rates · Estimates are not binding contracts
+
+📞 Call Now↑
