@@ -257,6 +257,17 @@
   #scrollTop.visible { opacity: 1; }
   #scrollTop:hover { border-color: var(--orange); color: var(--orange); }
 
+  /* PHOTO UPLOAD */
+  .photo-upload-area { border: 2px dashed var(--border); border-radius: 4px; padding: 20px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative; }
+  .photo-upload-area:hover { border-color: var(--orange); background: rgba(232,97,10,0.04); }
+  .photo-upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .photo-upload-label { font-size: 0.82rem; color: var(--muted); pointer-events: none; }
+  .photo-upload-label strong { color: var(--orange); }
+  .photo-previews { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .photo-thumb { position: relative; width: 72px; height: 72px; border-radius: 3px; overflow: hidden; border: 1px solid var(--border); }
+  .photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-thumb-remove { position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; background: rgba(0,0,0,0.7); border: none; border-radius: 50%; color: #fff; font-size: 0.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+
   @media print {
     nav, .hero-btns, .btn-generate, #scrollTop, .mobile-cta, .crm-clear, footer, #leads, hr.divider:not(.print-keep) { display: none !important; }
     body { background: white; color: black; }
@@ -659,6 +670,14 @@
         <input type="tel" id="contact-phone" placeholder="Phone" class="form-input">
         <input type="email" id="contact-email" placeholder="Email" class="form-input">
         <textarea id="contact-message" placeholder="Tell us about your project..." class="form-input" style="min-height:120px;resize:vertical;"></textarea>
+        <div>
+          <label class="form-label">📷 Photos (optional — up to 3, max 4MB each)</label>
+          <div class="photo-upload-area" id="contact-photo-area">
+            <input type="file" id="contact-photos" accept="image/*" multiple onchange="handlePhotos(this,'contact-previews','contact-photo-area')">
+            <div class="photo-upload-label">Click or drag photos here · <strong>JPG, PNG, HEIC</strong></div>
+          </div>
+          <div class="photo-previews" id="contact-previews"></div>
+        </div>
         <button class="btn-generate" id="contact-btn" onclick="sendContactMessage()" style="margin-top:4px;">Send Message →</button>
       </div>
     </div>
@@ -711,6 +730,14 @@
         </div>
       </div>
       <div class="full"><label class="form-label">Project Notes</label><textarea id="q-notes" class="form-input" style="min-height:80px;resize:vertical;" placeholder="Describe the work needed, repair types, access issues, etc."></textarea></div>
+      <div class="full">
+        <label class="form-label">📷 Site Photos (optional — up to 3, max 4MB each)</label>
+        <div class="photo-upload-area" id="quote-photo-area">
+          <input type="file" id="quote-photos" accept="image/*" multiple onchange="handlePhotos(this,'quote-previews','quote-photo-area')">
+          <div class="photo-upload-label">Click or drag job site photos here · <strong>JPG, PNG, HEIC</strong></div>
+        </div>
+        <div class="photo-previews" id="quote-previews"></div>
+      </div>
       <div class="full"><button class="btn-generate" id="quote-btn" onclick="generateQuote()">⚡ Generate Live Quote</button></div>
     </div>
     <div class="quote-output" id="quote-output">
@@ -792,6 +819,35 @@ function toggleFaq(btn) {
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
+}
+
+// ---- PHOTO UPLOAD ----
+const photoStore = {}; // keyed by formId
+
+function handlePhotos(input, previewId, areaId) {
+  const files = Array.from(input.files).slice(0, 3);
+  const key = previewId;
+  photoStore[key] = [];
+  const container = document.getElementById(previewId);
+  container.innerHTML = '';
+  files.forEach((file, i) => {
+    if (file.size > 4 * 1024 * 1024) { showToast(`${file.name} is over 4MB — skipped.`, false); return; }
+    const reader = new FileReader();
+    reader.onload = e => {
+      photoStore[key] = photoStore[key] || [];
+      photoStore[key].push({ name: file.name, type: file.type, data: e.target.result.split(',')[1] });
+      const thumb = document.createElement('div');
+      thumb.className = 'photo-thumb';
+      thumb.innerHTML = `<img src="${e.target.result}"><button class="photo-thumb-remove" onclick="removePhoto('${key}',${i},this.closest('.photo-thumb'))">✕</button>`;
+      container.appendChild(thumb);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function removePhoto(key, idx, el) {
+  if (photoStore[key]) photoStore[key].splice(idx, 1);
+  el.remove();
 }
 
 // ---- TRADE TOGGLE ----
@@ -915,6 +971,7 @@ Use 2026 Alberta rates. Be realistic for the project type and size. If sq ft not
     showToast('✅ Quote generated & lead saved!');
 
     // Also notify via API (fire and forget)
+    const quotePhotos = photoStore['quote-previews'] || [];
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -923,6 +980,7 @@ Use 2026 Alberta rates. Be realistic for the project type and size. If sq ft not
         name,
         phone,
         email,
+        photos: quotePhotos,
         message: `NEW QUOTE LEAD\n\nProject: ${type}\nArea: ${area}\nSq Ft: ${sqft || 'not specified'}\nTrades: ${trades.join(', ')}\nEstimate: $${Number(quote.grand_total).toLocaleString('en-CA')}\nTimeline: ${quote.timeline}\nRouting: ${routing.label}\n\nNotes: ${notes || 'None'}`
       })
     }).catch(() => {}); // Silent — lead is already saved locally
@@ -1015,10 +1073,11 @@ async function sendContactMessage() {
   btn.textContent = 'Sending…';
 
   try {
+    const photos = photoStore['contact-previews'] || [];
     const r = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type: 'contact', name, phone, email, message: msg })
+      body: JSON.stringify({ type: 'contact', name, phone, email, message: msg, photos })
     });
     const d = await r.json();
     if (d.success) {
@@ -1027,6 +1086,8 @@ async function sendContactMessage() {
       document.getElementById('contact-phone').value = '';
       document.getElementById('contact-email').value = '';
       document.getElementById('contact-message').value = '';
+      document.getElementById('contact-previews').innerHTML = '';
+      photoStore['contact-previews'] = [];
     } else {
       throw new Error(d.error || 'Unknown error');
     }
