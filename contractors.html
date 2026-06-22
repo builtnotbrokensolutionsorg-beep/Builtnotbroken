@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Get pre-qualified Calgary homeowner leads sent directly to you. No monthly fees. Pay only when you get a lead. BuiltNotBroken contractor partner program."/>
+<title>Contractor Partner Program — BuiltNotBroken Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0f0f0f;
+  --white:#ffffff;
+  --orange:#f4600c;
+  --orange-dk:#d44e00;
+  --surface:#f7f7f5;
+  --border:#e5e5e3;
+  --muted:#71717a;
+  --text:#1a1a1a;
+  --r:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 24px}
+.nav-inner{max-width:1080px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--black);font-weight:900;font-size:16px;letter-spacing:-.4px;flex-shrink:0}
+.logo-mark{width:32px;height:32px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-back{font-size:14px;color:var(--muted);text-decoration:none;font-weight:500}
+.nav-back:hover{color:var(--black)}
+.btn-primary{background:var(--orange);color:#fff;border:none;border-radius:var(--r);padding:9px 18px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:background .15s}
+.btn-primary:hover{background:var(--orange-dk)}
+
+/* ── HERO ── */
+.hero{background:var(--black);color:#fff;padding:80px 24px 72px}
+.hero-inner{max-width:760px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(244,96,12,.15);border:1px solid rgba(244,96,12,.3);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:700;color:var(--orange);margin-bottom:28px;letter-spacing:.02em;text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,58px);font-weight:900;line-height:1.06;letter-spacing:-2px;color:#fff;margin-bottom:20px}
+h1 em{font-style:normal;color:var(--orange)}
+.hero-sub{font-size:clamp(16px,2.5vw,19px);color:#9ca3af;line-height:1.6;max-width:500px;margin:0 auto 40px}
+
+.stat-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;padding-top:16px;border-top:1px solid rgba(255,255,255,.08)}
+.stat{text-align:center}
+.stat-num{font-size:28px;font-weight:900;color:var(--orange);letter-spacing:-1px}
+.stat-label{font-size:12px;color:#6b7280;margin-top:3px;font-weight:500}
+
+/* ── SECTION BASE ── */
+section{padding:72px 24px}
+.section-inner{max-width:1080px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.section-title{font-size:clamp(26px,5vw,38px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:16px;color:var(--black)}
+.section-sub{font-size:16px;color:var(--muted);line-height:1.6;max-width:500px}
+
+/* ── PRICING ── */
+.pricing{background:var(--surface)}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;max-width:720px}
+.pcard{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:32px 28px;position:relative;transition:border-color .2s,transform .2s}
+.pcard:hover{transform:translateY(-3px)}
+.pcard.featured{border-color:var(--orange);background:var(--black);color:#fff}
+.pcard-badge{position:absolute;top:-12px;left:24px;background:var(--orange);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:100px}
+.pcard-price{font-size:36px;font-weight:900;letter-spacing:-1.5px;color:var(--orange);margin-bottom:4px}
+.pcard-period{font-size:14px;font-weight:500;margin-bottom:20px}
+.pcard.featured .pcard-period{color:#9ca3af}
+.pcard h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.pcard.featured h3{color:#fff}
+.pcard-desc{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:24px}
+.pcard.featured .pcard-desc{color:#9ca3af}
+.pcard-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.pcard-features li{font-size:13px;display:flex;align-items:flex-start;gap:8px;color:var(--text)}
+.pcard.featured .pcard-features li{color:#d1d5db}
+.pcard-features li::before{content:"✓";color:var(--orange);font-weight:700;flex-shrink:0;margin-top:1px}
+.pcard-cta{display:block;background:var(--orange);color:#fff;text-align:center;padding:13px;border-radius:var(--r);font-size:15px;font-weight:700;text-decoration:none;transition:background .15s}
+.pcard-cta:hover{background:var(--orange-dk)}
+.pcard:not(.featured) .pcard-cta{background:var(--black)}
+.pcard:not(.featured) .pcard-cta:hover{background:var(--orange)}
+@media(max-width:560px){.pricing-grid{grid-template-columns:1fr}}
+
+/* ── HOW LEADS WORK ── */
+.leads-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:40px}
+.lead-card{border:1px solid var(--border);border-radius:12px;padding:22px 18px}
+.lead-icon{font-size:24px;margin-bottom:12px}
+.lead-title{font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px}
+.lead-desc{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ── REGISTER FORM ── */
+.register{background:var(--black);color:#fff}
+.register .section-title{color:#fff}
+.register .section-sub{color:#9ca3af}
+.reg-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:600px;margin-top:36px}
+.reg-form input,.reg-form select,.reg-form textarea{padding:14px 16px;font-size:14px;border:1.5px solid rgba(255,255,255,.1);border-radius:var(--r);background:rgba(255,255,255,.06);color:#fff;outline:none;font-family:inherit;transition:border-color .2s}
+.reg-form input:focus,.reg-form select:focus,.reg-form textarea:focus{border-color:var(--orange)}
+.reg-form input::placeholder{color:#6b7280}
+.reg-form select{appearance:none;cursor:pointer;color:#9ca3af}
+.reg-form select option{background:#1a1a1a;color:#fff}
+.reg-full{grid-column:1/-1}
+.reg-form textarea{resize:vertical;min-height:80px}
+.plan-toggle{grid-column:1/-1;display:flex;gap:10px}
+.plan-opt{flex:1;border:1.5px solid rgba(255,255,255,.12);border-radius:var(--r);padding:14px;cursor:pointer;transition:border-color .2s,background .2s;text-align:center}
+.plan-opt:hover,.plan-opt.active{border-color:var(--orange);background:rgba(244,96,12,.1)}
+.plan-opt-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.plan-opt-sub{font-size:12px;color:#6b7280}
+.btn-orange{background:var(--orange);color:#fff;border:none;border-radius:var(--r);padding:16px;font-size:16px;font-weight:800;cursor:pointer;width:100%;grid-column:1/-1;transition:background .15s;font-family:inherit}
+.btn-orange:hover{background:var(--orange-dk)}
+.reg-note{grid-column:1/-1;font-size:12px;color:#4b5563;text-align:center}
+@media(max-width:560px){.reg-form{grid-template-columns:1fr}.plan-toggle{flex-direction:column}}
+
+/* ── TESTIMONIALS ── */
+.t-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:40px}
+.tcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px}
+.stars{color:var(--orange);font-size:13px;margin-bottom:10px;letter-spacing:2px}
+.tcard p{font-size:14px;color:var(--text);line-height:1.65;margin-bottom:14px}
+.tauthor .aname{font-size:13px;font-weight:700;color:var(--black)}
+.tauthor .atrade{font-size:12px;color:var(--muted)}
+
+/* ── FOOTER ── */
+footer{background:var(--black);color:#fff;padding:40px 24px 28px;text-align:center}
+footer .logo{justify-content:center;color:#fff;margin-bottom:16px;display:inline-flex}
+footer p{font-size:13px;color:#4b5563;margin-bottom:8px}
+footer a{color:var(--orange);text-decoration:none;font-size:13px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      BuiltNotBroken
+    </a>
+    <div class="nav-right">
+      <a class="nav-back" href="index.html">← For homeowners</a>
+      <a class="btn-primary" href="#register">Register now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Contractor partner program</div>
+    <h1>Stop paying<br/><em>$400/month</em><br/>to exist online.</h1>
+    <p class="hero-sub">We send you pre-qualified Calgary homeowners who already know what they need and roughly what it costs. You pay only when we send you a lead.</p>
+    <a class="btn-primary" href="#register" style="font-size:16px;padding:14px 28px;display:inline-block;margin-bottom:48px">Register free — first 3 leads on us</a>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">$0</div><div class="stat-label">Monthly fee</div></div>
+      <div class="stat"><div class="stat-num">48hr</div><div class="stat-label">Avg. lead time</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Free trial leads</div></div>
+      <div class="stat"><div class="stat-num">11+</div><div class="stat-label">Trades covered</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner reveal">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Two ways to partner.<br/>Zero monthly fees.</h2>
+    <p class="section-sub">Pick what works for your business. Switch anytime.</p>
+    <div class="pricing-grid">
+      <div class="pcard featured">
+        <div class="pcard-badge">Most popular</div>
+        <div class="pcard-price">$100</div>
+        <div class="pcard-period">per qualified lead</div>
+        <h3>Pay-Per-Lead</h3>
+        <div class="pcard-desc">Flat fee every time we send you a homeowner. Best for smaller jobs and high-volume trades.</div>
+        <ul class="pcard-features">
+          <li>Full contact info — name, phone, email</li>
+          <li>Project details + estimated scope</li>
+          <li>Matched to your trade & service area</li>
+          <li>No lead = no charge</li>
+          <li>First 3 leads free, no commitment</li>
+        </ul>
+        <a class="pcard-cta" href="#register">Get started free</a>
+      </div>
+      <div class="pcard">
+        <div class="pcard-price">8%</div>
+        <div class="pcard-period">of completed job value</div>
+        <h3>Revenue Share</h3>
+        <div class="pcard-desc">Pay a percentage of your invoice instead. Better for larger renovation projects.</div>
+        <ul class="pcard-features">
+          <li>No upfront cost per lead</li>
+          <li>8% of final invoice on completed jobs</li>
+          <li>Ideal for jobs over $2,000</li>
+          <li>Monthly invoicing — one payment</li>
+          <li>Full lead details provided upfront</li>
+        </ul>
+        <a class="pcard-cta" href="#register">Choose revenue share</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW LEADS WORK -->
+<section>
+  <div class="section-inner reveal">
+    <p class="section-label">What you get</p>
+    <h2 class="section-title">What a lead looks like</h2>
+    <p class="section-sub">Every lead arrives pre-qualified — the homeowner already has an estimate range and knows what trade they need.</p>
+    <div class="leads-grid">
+      <div class="lead-card">
+        <div class="lead-icon">👤</div>
+        <div class="lead-title">Full contact info</div>
+        <div class="lead-desc">Name, phone, and email. No chasing, no cold outreach — they're expecting your call.</div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-icon">📋</div>
+        <div class="lead-title">Project scope</div>
+        <div class="lead-desc">Trade needed, square footage, location, photos if uploaded. You know what you're quoting before you call.</div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-icon">💰</div>
+        <div class="lead-title">Estimate range</div>
+        <div class="lead-desc">Homeowner already has a ballpark figure. No sticker shock — they've accepted the cost reality before you quote.</div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-icon">📍</div>
+        <div class="lead-title">Your area only</div>
+        <div class="lead-desc">We match leads to your service area. No driving across the city for a job that doesn't make sense.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section class="register" id="register">
+  <div class="section-inner">
+    <p class="section-label" style="color:rgba(244,96,12,.7)">Register</p>
+    <h2 class="section-title">Join the network</h2>
+    <p class="section-sub">Fill in your details. First 3 leads are free — no commitment, no credit card.</p>
+    <div class="reg-form">
+      <input type="text" placeholder="Your name" id="r-name"/>
+      <input type="text" placeholder="Company name" id="r-company"/>
+      <input type="tel" placeholder="Phone number" id="r-phone"/>
+      <input type="email" placeholder="Email address" id="r-email"/>
+      <select id="r-trade" class="reg-full">
+        <option value="">Trade specialty</option>
+        <option>Stucco / EIFS</option>
+        <option>Masonry / Parging</option>
+        <option>Electrical</option>
+        <option>Plumbing</option>
+        <option>HVAC</option>
+        <option>Framing</option>
+        <option>Drywall</option>
+        <option>Roofing</option>
+        <option>Concrete</option>
+        <option>Painting</option>
+        <option>Flooring</option>
+        <option>Landscaping</option>
+        <option>General Contractor</option>
+      </select>
+      <input type="text" placeholder="Service areas (e.g. Calgary NW, Airdrie)" id="r-areas" class="reg-full"/>
+      <div class="plan-toggle">
+        <div class="plan-opt active" onclick="selectPlan(this, 'per-lead')">
+          <div class="plan-opt-title">$100 / lead</div>
+          <div class="plan-opt-sub">Pay per qualified lead</div>
+        </div>
+        <div class="plan-opt" onclick="selectPlan(this, 'rev-share')">
+          <div class="plan-opt-title">8% revenue share</div>
+          <div class="plan-opt-sub">Pay on completed jobs</div>
+        </div>
+      </div>
+      <button class="btn-orange" onclick="submitReg()">Register — first 3 leads free</button>
+      <p class="reg-note">No monthly fees. No credit card needed to register. Evan will review and be in touch within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-inner reveal">
+    <p class="section-label">From partners</p>
+    <h2 class="section-title">Contractors already<br/>in the network</h2>
+    <div class="t-grid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"As a general, I've tried a dozen platforms. BuiltNotBroken sends leads with actual project details and a budget range — exactly what I need before I return a call."</p>
+        <div class="tauthor">
+          <div class="aname">Jordan M.</div>
+          <div class="atrade">Cochrane — General Contractor</div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"$100 a lead sounds like a lot until you realize the homeowner already knows what they want and has a budget. My close rate is way higher than any other platform."</p>
+        <div class="tauthor">
+          <div class="aname">Dave K.</div>
+          <div class="atrade">Calgary NE — Electrician</div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"I was paying HomeStars $350/month and getting garbage leads. Three free leads on BuiltNotBroken converted two jobs. Done deal."</p>
+        <div class="tauthor">
+          <div class="aname">Mike R.</div>
+          <div class="atrade">Airdrie — Roofing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo" href="index.html">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    BuiltNotBroken
+  </a>
+  <p>Calgary's fair contractor platform — built by trades, for trades.</p>
+  <p>© 2026 BuiltNotBroken Solutions · Calgary, AB</p>
+  <a href="mailto:evan@builtnotbrokensolutions.org">evan@builtnotbrokensolutions.org</a>
+  · <a href="tel:4034709749">403-470-9749</a>
+</footer>
+
+<script>
+let selectedPlan = 'per-lead';
+function selectPlan(el, plan) {
+  document.querySelectorAll('.plan-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+  selectedPlan = plan;
+}
+function submitReg() {
+  const name = document.getElementById('r-name').value.trim();
+  const company = document.getElementById('r-company').value.trim();
+  const phone = document.getElementById('r-phone').value.trim();
+  const email = document.getElementById('r-email').value.trim();
+  const trade = document.getElementById('r-trade').value;
+  if (!name || !company || !phone || !email || !trade) {
+    alert('Please fill in all fields to register.');
+    return;
+  }
+  alert(`Thanks ${name}! Your registration for ${company} has been received. Evan will review and be in touch within 24 hours. Your first 3 leads are on us.`);
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
