@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="BuiltNotBroken serves all Calgary quadrants and surrounding communities — Airdrie, Cochrane, Chestermere, Okotoks, Strathmore, High River and more."/>
+<title>Service Areas — BuiltNotBroken Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0f0f0f;--white:#ffffff;--orange:#f4600c;--orange-dk:#d44e00;--surface:#f7f7f5;--border:#e5e5e3;--muted:#71717a;--text:#1a1a1a;--r:10px;}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 24px}
+.nav-inner{max-width:1080px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--black);font-weight:900;font-size:16px;letter-spacing:-.4px}
+.logo-mark{width:32px;height:32px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--black)}
+.nav-links a.active{color:var(--black);font-weight:700}
+.nav-phone{font-size:14px;font-weight:700;color:var(--orange);text-decoration:none}
+@media(max-width:700px){.nav-links,.nav-phone{display:none}}
+
+.page-hero{background:var(--black);padding:56px 24px 48px;text-align:center}
+.page-hero h1{font-size:clamp(32px,6vw,52px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1.08;margin-bottom:14px}
+.page-hero h1 em{font-style:normal;color:var(--orange)}
+.page-hero p{font-size:16px;color:#9ca3af;max-width:480px;margin:0 auto}
+
+section{padding:72px 24px}
+.section-inner{max-width:1080px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.section-title{font-size:clamp(26px,5vw,40px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:16px;color:var(--black)}
+.section-sub{font-size:16px;color:var(--muted);line-height:1.6;max-width:520px;margin-bottom:48px}
+
+/* CITY GRID */
+.city-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.city-card{border:1.5px solid var(--border);border-radius:14px;padding:24px 20px;transition:border-color .2s,transform .2s;cursor:default}
+.city-card:hover{border-color:var(--orange);transform:translateY(-2px)}
+.city-card.primary{border-color:var(--orange);background:rgba(244,96,12,.04)}
+.city-dist{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.city-name{font-size:18px;font-weight:900;color:var(--black);margin-bottom:8px;letter-spacing:-.3px}
+.city-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.city-trades{display:flex;flex-wrap:wrap;gap:6px}
+.city-trade{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:600;color:var(--muted)}
+
+/* MAP PLACEHOLDER */
+.map-wrap{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:48px;gap:12px}
+.map-wrap svg{width:48px;height:48px;stroke:var(--border);fill:none;stroke-width:1.5}
+.map-wrap p{font-size:14px;color:var(--muted);font-weight:500}
+.map-wrap a{font-size:14px;color:var(--orange);font-weight:700;text-decoration:none}
+
+/* COVERAGE TABLE */
+.coverage-table{width:100%;border-collapse:collapse;margin-top:32px}
+.coverage-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:10px 16px;border-bottom:2px solid var(--border)}
+.coverage-table td{padding:14px 16px;font-size:14px;border-bottom:1px solid var(--border);vertical-align:top}
+.coverage-table tr:last-child td{border-bottom:none}
+.coverage-table tr:hover td{background:var(--surface)}
+.coverage-table td:first-child{font-weight:700;color:var(--black)}
+.coverage-table td:nth-child(2){color:var(--muted)}
+.badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700}
+.badge-yes{background:rgba(74,222,128,.12);color:#16a34a}
+.badge-call{background:rgba(244,96,12,.1);color:var(--orange)}
+@media(max-width:600px){.coverage-table{font-size:13px}.coverage-table th,.coverage-table td{padding:10px 12px}}
+
+/* CTA */
+.cta-band{background:var(--orange);padding:56px 24px;text-align:center}
+.cta-band h2{font-size:clamp(28px,5vw,42px);font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:12px}
+.cta-band p{font-size:16px;color:rgba(255,255,255,.75);margin-bottom:32px}
+.btn-white{background:#fff;color:var(--orange);border:none;border-radius:var(--r);padding:15px 28px;font-size:16px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s}
+.btn-white:hover{background:#f0f0ee}
+
+footer{background:var(--black);color:#fff;padding:40px 24px 28px}
+.footer-inner{max-width:1080px;margin:0 auto}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:#4b5563}
+.footer-bottom a{font-size:12px;color:var(--orange);text-decoration:none;margin-left:16px}
+.footer-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;font-weight:900;font-size:15px;margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      BuiltNotBroken
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quote.html">Get a quote</a>
+      <a href="areas.html" class="active">Service areas</a>
+      <a href="about.html">About</a>
+      <a href="contractors.html">For contractors</a>
+    </div>
+    <a class="nav-phone" href="tel:4034709749">403-470-9749</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>We cover <em>all of Calgary</em><br/>and surrounding areas</h1>
+  <p>From the city core to Rocky View County — within 100km of Calgary we're there.</p>
+</div>
+
+<section>
+  <div class="section-inner">
+    <p class="section-label">Coverage map</p>
+    <h2 class="section-title">Where we work</h2>
+    <p class="section-sub">Every quadrant of Calgary plus all major satellite communities. Not sure if we cover your area? Call us — if it's within 100km of Calgary, we'll make it work.</p>
+
+    <div class="map-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      <p>Interactive map coming soon</p>
+      <a href="https://maps.google.com/?q=Calgary,+AB" target="_blank">View Calgary on Google Maps →</a>
+    </div>
+
+    <div class="city-grid">
+      <div class="city-card primary">
+        <div class="city-dist">City Core</div>
+        <div class="city-name">Calgary — All Quadrants</div>
+        <div class="city-desc">NW, NE, SW, SE — we work across the entire city. Same-day availability for most trades.</div>
+        <div class="city-trades">
+          <span class="city-trade">All 12 trades</span>
+          <span class="city-trade">Same-day available</span>
+          <span class="city-trade">Permits handled</span>
+        </div>
+      </div>
+      <div class="city-card">
+        <div class="city-dist">~30km North</div>
+        <div class="city-name">Airdrie</div>
+        <div class="city-desc">Full coverage. One of our most active markets — fast turnaround on quotes and scheduling.</div>
+        <div class="city-trades"><span class="city-trade">All trades</span><span class="city-trade">48hr quote</span></div>
+      </div>
+      <div class="city-card">
+        <div class="city-dist">~45km Northwest</div>
+        <div class="city-name">Cochrane</div>
+        <div class="city-desc">Full coverage for all trades. Rocky Mountain foothills conditions — we know the freeze-thaw cycles here.</div>
+        <div class="city-trades"><span class="city-trade">All trades</span><span class="city-trade">Foundation specialists</span></div>
+      </div>
+      <div class="city-card">
+        <div class="city-dist">~20km East</div>
+        <div class="city-name">Chestermere</div>
+        <div class="city-desc">Full coverage. Lakeside community with high demand for exterior work — stucco, masonry, concrete.</div>
+        <div class="city-trades"><span class="city-trade">All trades</span><span class="city-trade">Exterior specialists</span></div>
+      </div>
+      <div class="city-card">
+        <div class="city-dist">~40km South</div>
+        <div class="city-name">Okotoks</div>
+        <div class="city-desc">Full coverage. Growing fast — new builds and renovation work both in high demand.</div>
+        <div class="city-trades"><span class="city-trade">All trades</span><span class="city-trade">New builds welcome</span></div>
+      </div>
+      <div class="city-card">
+        <div class="city-dist">~50km East</div>
+        <div class="city-name">Strathmore</div>
+        <div class="city-desc">Full coverage for most trades. Rural and acreage properties welcome.</div>
+        <div class="city-trades"><span class="city-trade">Most trades</span><span class="city-trade">Acreage welcome</span></div>
+      </div>
+      <div class="city-card">
+        <div class="city-dist">~60km South</div>
+        <div class="city-name">High River</div>
+        <div class="city-desc">Full coverage. Flood remediation experience — foundation, concrete, and structural work.</div>
+        <div class="city-trades"><span class="city-trade">All trades</span><span class="city-trade">Remediation exp.</span></div>
+      </div>
+      <div class="city-card">
+        <div class="city-dist">County</div>
+        <div class="city-name">Rocky View County</div>
+        <div class="city-desc">Acreage and rural properties across the county. Travel surcharge may apply beyond 60km.</div>
+        <div class="city-trades"><span class="city-trade">Most trades</span><span class="city-trade">Travel surcharge may apply</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--surface);padding-top:0">
+  <div class="section-inner">
+    <p class="section-label">Coverage details</p>
+    <h2 class="section-title">Trade availability<br/>by area</h2>
+    <table class="coverage-table">
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Distance</th>
+          <th>All trades</th>
+          <th>Response time</th>
+          <th>Travel fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Calgary (all)</td><td>City core</td><td><span class="badge badge-yes">✓ Yes</span></td><td>24–48 hrs</td><td>None</td></tr>
+        <tr><td>Airdrie</td><td>~30km</td><td><span class="badge badge-yes">✓ Yes</span></td><td>24–48 hrs</td><td>None</td></tr>
+        <tr><td>Cochrane</td><td>~45km</td><td><span class="badge badge-yes">✓ Yes</span></td><td>48 hrs</td><td>None</td></tr>
+        <tr><td>Chestermere</td><td>~20km</td><td><span class="badge badge-yes">✓ Yes</span></td><td>24–48 hrs</td><td>None</td></tr>
+        <tr><td>Okotoks</td><td>~40km</td><td><span class="badge badge-yes">✓ Yes</span></td><td>48 hrs</td><td>None</td></tr>
+        <tr><td>Strathmore</td><td>~50km</td><td><span class="badge badge-yes">✓ Yes</span></td><td>48–72 hrs</td><td>None</td></tr>
+        <tr><td>High River</td><td>~60km</td><td><span class="badge badge-yes">✓ Yes</span></td><td>48–72 hrs</td><td>None</td></tr>
+        <tr><td>Rocky View County</td><td>Varies</td><td><span class="badge badge-yes">✓ Most</span></td><td>48–72 hrs</td><td>May apply 60km+</td></tr>
+        <tr><td>Beyond 100km</td><td>100km+</td><td><span class="badge badge-call">Call us</span></td><td>Call for availability</td><td>Quoted per job</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Not sure if we cover you?</h2>
+  <p>Call us at 403-470-9749 or post your job — if it's within reach, we'll make it work.</p>
+  <a class="btn-white" href="index.html#post-job">Post your job free</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-logo" href="index.html">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      BuiltNotBroken
+    </a>
+    <div class="footer-bottom">
+      <p>© 2026 BuiltNotBroken Solutions · Calgary, AB</p>
+      <div>
+        <a href="mailto:evan@builtnotbrokensolutions.org">evan@builtnotbrokensolutions.org</a>
+        <a href="tel:4034709749">403-470-9749</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
