@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Get an instant AI-powered quote for any home repair or renovation in Calgary. Live 2026 Alberta labour rates. Free, no account needed."/>
+<title>Instant Quote — BuiltNotBroken Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0f0f0f;--white:#ffffff;--orange:#f4600c;--orange-dk:#d44e00;--surface:#f7f7f5;--border:#e5e5e3;--muted:#71717a;--text:#1a1a1a;--r:10px;}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 24px}
+.nav-inner{max-width:1080px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--black);font-weight:900;font-size:16px;letter-spacing:-.4px}
+.logo-mark{width:32px;height:32px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--black)}
+.nav-links a.active{color:var(--black);font-weight:700}
+.nav-phone{font-size:14px;font-weight:700;color:var(--orange);text-decoration:none}
+@media(max-width:700px){.nav-links,.nav-phone{display:none}}
+
+/* PAGE HERO */
+.page-hero{background:var(--black);padding:56px 24px 48px;text-align:center}
+.page-hero h1{font-size:clamp(32px,6vw,52px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1.08;margin-bottom:14px}
+.page-hero h1 em{font-style:normal;color:var(--orange)}
+.page-hero p{font-size:16px;color:#9ca3af;max-width:480px;margin:0 auto}
+
+/* QUOTE FORM */
+.quote-wrap{max-width:780px;margin:0 auto;padding:48px 24px 80px}
+.quote-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden}
+.quote-steps{display:flex;border-bottom:1px solid var(--border)}
+.qstep{flex:1;padding:16px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--muted);border-right:1px solid var(--border);cursor:pointer;transition:background .15s;letter-spacing:.02em;text-transform:uppercase}
+.qstep:last-child{border-right:none}
+.qstep.active{background:var(--orange);color:#fff}
+.qstep.done{background:var(--surface);color:var(--orange)}
+
+.qpanel{display:none;padding:32px}
+.qpanel.active{display:block}
+.qpanel h2{font-size:20px;font-weight:800;margin-bottom:6px;color:var(--black)}
+.qpanel .qsub{font-size:14px;color:var(--muted);margin-bottom:28px}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-full{grid-column:1/-1}
+.form-grid label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--text)}
+.form-grid input,.form-grid select,.form-grid textarea{padding:13px 14px;font-size:14px;border:1.5px solid var(--border);border-radius:var(--r);outline:none;font-family:inherit;color:var(--text);transition:border-color .2s;background:#fff}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{border-color:var(--orange)}
+.form-grid textarea{resize:vertical;min-height:90px}
+@media(max-width:540px){.form-grid{grid-template-columns:1fr}}
+
+/* trade selector */
+.trade-select{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:24px}
+.trade-opt{border:1.5px solid var(--border);border-radius:var(--r);padding:12px 10px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;transition:border-color .15s,background .15s;user-select:none}
+.trade-opt:hover{border-color:var(--orange)}
+.trade-opt.selected{border-color:var(--orange);background:rgba(244,96,12,.07);color:var(--orange)}
+.trade-opt span:first-child{font-size:18px}
+
+/* result panel */
+.result-panel{display:none;padding:32px}
+.result-panel.active{display:block}
+.result-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.result-header h2{font-size:22px;font-weight:900;color:var(--black);letter-spacing:-.5px}
+.result-badge{background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3);color:#16a34a;font-size:12px;font-weight:700;padding:5px 12px;border-radius:100px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.result-grid{display:grid;gap:10px;margin-bottom:28px}
+.result-row{display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;padding:14px 16px;background:var(--surface);border-radius:var(--r);border:1px solid var(--border)}
+.result-trade{font-size:14px;font-weight:700;color:var(--black);display:flex;align-items:center;gap:8px}
+.result-range{font-size:14px;font-weight:800;color:var(--orange)}
+.result-rate{font-size:12px;color:var(--muted)}
+.result-total{background:var(--black);color:#fff;border-radius:12px;padding:20px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.result-total .label{font-size:13px;color:#9ca3af;font-weight:600}
+.result-total .amount{font-size:28px;font-weight:900;color:var(--orange);letter-spacing:-1px}
+.result-note{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:24px;padding:14px;background:var(--surface);border-radius:var(--r)}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-orange-lg{background:var(--orange);color:#fff;border:none;border-radius:var(--r);padding:14px 24px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;transition:background .15s;text-decoration:none;display:inline-block}
+.btn-orange-lg:hover{background:var(--orange-dk)}
+.btn-black{background:var(--black);color:#fff;border:none;border-radius:var(--r);padding:14px 24px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn-black:hover{background:#333}
+
+/* nav buttons */
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.btn-next{background:var(--black);color:#fff;border:none;border-radius:var(--r);padding:13px 24px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn-next:hover{background:var(--orange)}
+.btn-back-q{background:none;border:1.5px solid var(--border);border-radius:var(--r);padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted)}
+.btn-back-q:hover{border-color:var(--black);color:var(--black)}
+.step-indicator{font-size:13px;color:var(--muted);font-weight:500}
+
+/* loading */
+.loading{display:none;padding:48px 32px;text-align:center}
+.loading.active{display:block}
+.spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{font-size:15px;color:var(--muted);font-weight:500}
+
+footer{background:var(--black);color:#fff;padding:40px 24px 28px}
+.footer-inner{max-width:1080px;margin:0 auto}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:#4b5563}
+.footer-bottom a{font-size:12px;color:var(--orange);text-decoration:none;margin-left:16px}
+.footer-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;font-weight:900;font-size:15px;margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      BuiltNotBroken
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quote.html" class="active">Get a quote</a>
+      <a href="areas.html">Service areas</a>
+      <a href="about.html">About</a>
+      <a href="contractors.html">For contractors</a>
+    </div>
+    <a class="nav-phone" href="tel:4034709749">403-470-9749</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Get an <em>instant quote</em><br/>for your project</h1>
+  <p>Live 2026 Alberta labour rates. Takes 2 minutes. No account, no spam.</p>
+</div>
+
+<div class="quote-wrap">
+  <div class="quote-card">
+    <!-- STEP TABS -->
+    <div class="quote-steps">
+      <div class="qstep active" id="tab1">1 · Your info</div>
+      <div class="qstep" id="tab2">2 · Project</div>
+      <div class="qstep" id="tab3">3 · Trades</div>
+    </div>
+
+    <!-- PANEL 1: Contact -->
+    <div class="qpanel active" id="panel1">
+      <h2>Tell us about yourself</h2>
+      <p class="qsub">So we can send your quote and connect you with the right contractors.</p>
+      <div class="form-grid">
+        <label>First name <input type="text" id="q-fname" placeholder="Evan"/></label>
+        <label>Last name <input type="text" id="q-lname" placeholder="Thompson"/></label>
+        <label class="form-full">Email address <input type="email" id="q-email" placeholder="you@email.com"/></label>
+        <label class="form-full">Phone number <input type="tel" id="q-phone" placeholder="403-000-0000"/></label>
+      </div>
+      <div class="qnav">
+        <span class="step-indicator">Step 1 of 3</span>
+        <button class="btn-next" onclick="goStep(2)">Next →</button>
+      </div>
+    </div>
+
+    <!-- PANEL 2: Project -->
+    <div class="qpanel" id="panel2">
+      <h2>About your project</h2>
+      <p class="qsub">Give us the basics so we can generate accurate Calgary-rate numbers.</p>
+      <div class="form-grid">
+        <label class="form-full">Project type
+          <select id="q-type">
+            <option value="">Select one</option>
+            <option>Repair / Service call</option>
+            <option>Renovation / Retrofit</option>
+            <option>New residential build</option>
+            <option>Basement suite</option>
+            <option>Commercial build-out</option>
+            <option>Acreage / Rural property</option>
+            <option>Multi-family / Condo</option>
+          </select>
+        </label>
+        <label>Service area
+          <select id="q-area">
+            <option value="">Select area</option>
+            <option>Calgary NW</option>
+            <option>Calgary NE</option>
+            <option>Calgary SW</option>
+            <option>Calgary SE</option>
+            <option>Airdrie</option>
+            <option>Cochrane</option>
+            <option>Chestermere</option>
+            <option>Okotoks</option>
+            <option>Strathmore</option>
+            <option>High River</option>
+            <option>Rocky View County</option>
+          </select>
+        </label>
+        <label>Approx. square footage
+          <input type="number" id="q-sqft" placeholder="e.g. 400"/>
+        </label>
+        <label class="form-full">Describe the job
+          <textarea id="q-desc" placeholder="What needs to be done? More detail = more accurate quote."></textarea>
+        </label>
+      </div>
+      <div class="qnav">
+        <button class="btn-back-q" onclick="goStep(1)">← Back</button>
+        <span class="step-indicator">Step 2 of 3</span>
+        <button class="btn-next" onclick="goStep(3)">Next →</button>
+      </div>
+    </div>
+
+    <!-- PANEL 3: Trades -->
+    <div class="qpanel" id="panel3">
+      <h2>Which trades do you need?</h2>
+      <p class="qsub">Select all that apply — we'll quote each one separately.</p>
+      <div class="trade-select">
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Stucco / EIFS" data-low="48" data-high="72"><span>🧱</span>Stucco / EIFS</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Masonry" data-low="50" data-high="75"><span>🪨</span>Masonry</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Electrical" data-low="58" data-high="82"><span>⚡</span>Electrical</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Plumbing" data-low="60" data-high="85"><span>🔧</span>Plumbing</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="HVAC" data-low="52" data-high="75"><span>❄️</span>HVAC</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Framing" data-low="42" data-high="58"><span>🪵</span>Framing</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Drywall" data-low="38" data-high="52"><span>🏠</span>Drywall</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Roofing" data-low="40" data-high="60"><span>🏗️</span>Roofing</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Concrete" data-low="45" data-high="65"><span>🧱</span>Concrete</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Painting" data-low="35" data-high="50"><span>🎨</span>Painting</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Flooring" data-low="32" data-high="48"><span>🟫</span>Flooring</div>
+        <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Landscaping" data-low="38" data-high="55"><span>🌿</span>Landscaping</div>
+      </div>
+      <div class="qnav">
+        <button class="btn-back-q" onclick="goStep(2)">← Back</button>
+        <span class="step-indicator">Step 3 of 3</span>
+        <button class="btn-next" onclick="generateQuote()">⚡ Generate Quote</button>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Calculating live Calgary rates…</p>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="result-panel" id="results">
+      <div class="result-header">
+        <h2>Your Instant Estimate</h2>
+        <div class="result-badge">✓ 2026 AB Live Rates</div>
+      </div>
+      <div class="result-grid" id="result-rows"></div>
+      <div class="result-total">
+        <div><div class="label">Estimated total range</div><div class="amount" id="result-total-amt"></div></div>
+        <div style="font-size:12px;color:#6b7280;text-align:right">Labour only<br/>Materials quoted separately</div>
+      </div>
+      <div class="result-note">
+        ⚠️ This estimate uses live 2026 Alberta labour rates and is typically within 10–15% of final invoice. It's a planning number — final pricing is confirmed after a site visit. Materials, permits, and GST are not included.
+      </div>
+      <div class="result-actions">
+        <a class="btn-orange-lg" href="index.html#post-job">Post my job — get real quotes</a>
+        <button class="btn-black" onclick="resetQuote()">Start over</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-logo" href="index.html">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      BuiltNotBroken
+    </a>
+    <div class="footer-bottom">
+      <p>© 2026 BuiltNotBroken Solutions · Calgary, AB</p>
+      <div>
+        <a href="mailto:evan@builtnotbrokensolutions.org">evan@builtnotbrokensolutions.org</a>
+        <a href="tel:4034709749">403-470-9749</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+let currentStep = 1;
+
+function goStep(n) {
+  if (n === 2) {
+    const fname = document.getElementById('q-fname').value.trim();
+    const email = document.getElementById('q-email').value.trim();
+    const phone = document.getElementById('q-phone').value.trim();
+    if (currentStep === 1 && (!fname || !email || !phone)) {
+      alert('Please fill in your name, email, and phone to continue.');
+      return;
+    }
+  }
+  if (n === 3) {
+    const type = document.getElementById('q-type').value;
+    const area = document.getElementById('q-area').value;
+    if (currentStep === 2 && (!type || !area)) {
+      alert('Please select a project type and service area.');
+      return;
+    }
+  }
+  document.querySelectorAll('.qpanel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.qstep').forEach((t, i) => {
+    t.classList.remove('active');
+    if (i + 1 < n) t.classList.add('done');
+    else t.classList.remove('done');
+  });
+  document.getElementById('panel' + n).classList.add('active');
+  document.getElementById('tab' + n).classList.add('active');
+  currentStep = n;
+}
+
+function toggleTrade(el) {
+  el.classList.toggle('selected');
+}
+
+function generateQuote() {
+  const selected = document.querySelectorAll('.trade-opt.selected');
+  if (selected.length === 0) {
+    alert('Please select at least one trade.');
+    return;
+  }
+  document.querySelectorAll('.qpanel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.qstep').forEach(t => { t.classList.remove('active'); t.classList.add('done'); });
+  document.getElementById('loading').classList.add('active');
+
+  setTimeout(() => {
+    document.getElementById('loading').classList.remove('active');
+    buildResults(selected);
+  }, 1800);
+}
+
+function buildResults(selected) {
+  const sqft = parseInt(document.getElementById('q-sqft').value) || 200;
+  const hours = Math.max(4, Math.round(sqft / 40));
+  let totalLow = 0, totalHigh = 0;
+  const rows = document.getElementById('result-rows');
+  rows.innerHTML = '';
+
+  selected.forEach(el => {
+    const trade = el.dataset.trade;
+    const low = parseInt(el.dataset.low);
+    const high = parseInt(el.dataset.high);
+    const jobLow = low * hours;
+    const jobHigh = high * hours;
+    totalLow += jobLow;
+    totalHigh += jobHigh;
+    rows.innerHTML += `
+      <div class="result-row">
+        <div class="result-trade">${el.innerHTML} ${trade}</div>
+        <div class="result-range">$${jobLow.toLocaleString()}–$${jobHigh.toLocaleString()}</div>
+        <div class="result-rate">$${low}–$${high}/hr · ~${hours}hrs</div>
+      </div>`;
+  });
+
+  document.getElementById('result-total-amt').textContent =
+    `$${totalLow.toLocaleString()} – $${totalHigh.toLocaleString()}`;
+  document.getElementById('results').classList.add('active');
+}
+
+function resetQuote() {
+  document.getElementById('results').classList.remove('active');
+  document.querySelectorAll('.trade-opt').forEach(t => t.classList.remove('selected'));
+  document.querySelectorAll('.qpanel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.qstep').forEach(t => { t.classList.remove('active','done'); });
+  document.getElementById('panel1').classList.add('active');
+  document.getElementById('tab1').classList.add('active');
+  currentStep = 1;
+}
+</script>
+</body>
+</html>
