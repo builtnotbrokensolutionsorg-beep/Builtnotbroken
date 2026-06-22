@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="BuiltNotBroken was founded by a Calgary trades contractor who got tired of watching platforms gouge homeowners and contractors alike. Here's our story."/>
+<title>About — BuiltNotBroken Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0f0f0f;--white:#ffffff;--orange:#f4600c;--orange-dk:#d44e00;--surface:#f7f7f5;--border:#e5e5e3;--muted:#71717a;--text:#1a1a1a;--r:10px;}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 24px}
+.nav-inner{max-width:1080px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--black);font-weight:900;font-size:16px;letter-spacing:-.4px}
+.logo-mark{width:32px;height:32px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--black)}
+.nav-links a.active{color:var(--black);font-weight:700}
+.nav-phone{font-size:14px;font-weight:700;color:var(--orange);text-decoration:none}
+@media(max-width:700px){.nav-links,.nav-phone{display:none}}
+
+/* HERO */
+.page-hero{background:var(--black);padding:72px 24px 64px}
+.page-hero-inner{max-width:720px;margin:0 auto}
+.hero-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.page-hero h1{font-size:clamp(34px,6vw,56px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1.06;margin-bottom:20px}
+.page-hero h1 em{font-style:normal;color:var(--orange)}
+.page-hero p{font-size:17px;color:#9ca3af;line-height:1.7;max-width:560px}
+
+/* STORY */
+.story{max-width:720px;margin:0 auto;padding:72px 24px}
+.story p{font-size:17px;line-height:1.8;color:var(--text);margin-bottom:24px}
+.story p strong{color:var(--black);font-weight:700}
+.story blockquote{border-left:3px solid var(--orange);padding:16px 24px;background:var(--surface);border-radius:0 var(--r) var(--r) 0;margin:32px 0;font-size:18px;font-weight:700;color:var(--black);line-height:1.5;font-style:italic}
+
+/* VALUES */
+.values{background:var(--surface);padding:72px 24px}
+.values-inner{max-width:1080px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.section-title{font-size:clamp(26px,5vw,40px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:48px;color:var(--black)}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.val-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px 22px;transition:border-color .2s}
+.val-card:hover{border-color:var(--orange)}
+.val-icon{font-size:28px;margin-bottom:14px}
+.val-title{font-size:16px;font-weight:800;color:var(--black);margin-bottom:8px}
+.val-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* FOUNDER */
+.founder{padding:72px 24px;max-width:1080px;margin:0 auto}
+.founder-card{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;background:var(--black);border-radius:20px;padding:40px;color:#fff}
+.founder-avatar{width:100px;height:100px;border-radius:16px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;color:#fff;flex-shrink:0}
+.founder-name{font-size:22px;font-weight:900;color:#fff;margin-bottom:4px;letter-spacing:-.4px}
+.founder-role{font-size:13px;color:var(--orange);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+.founder-bio{font-size:15px;color:#9ca3af;line-height:1.75}
+.founder-bio strong{color:#fff}
+.founder-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.founder-link{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:#fff;text-decoration:none;background:rgba(255,255,255,.08);border-radius:8px;padding:8px 14px;transition:background .15s}
+.founder-link:hover{background:rgba(244,96,12,.2);color:var(--orange)}
+@media(max-width:560px){.founder-card{grid-template-columns:1fr}.founder-avatar{width:72px;height:72px;font-size:26px}}
+
+/* NUMBERS */
+.numbers{background:var(--orange);padding:56px 24px;text-align:center}
+.numbers-inner{max-width:800px;margin:0 auto}
+.numbers h2{font-size:clamp(22px,4vw,32px);font-weight:900;color:#fff;letter-spacing:-.5px;margin-bottom:40px}
+.num-grid{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.num-item .num{font-size:42px;font-weight:900;color:#fff;letter-spacing:-2px}
+.num-item .num-label{font-size:13px;color:rgba(255,255,255,.7);font-weight:600;margin-top:4px}
+
+/* CTA */
+.cta-band{padding:72px 24px;text-align:center;background:var(--surface)}
+.cta-band h2{font-size:clamp(26px,5vw,40px);font-weight:900;color:var(--black);letter-spacing:-1px;margin-bottom:12px}
+.cta-band p{font-size:16px;color:var(--muted);margin-bottom:32px}
+.btn-black-lg{background:var(--black);color:#fff;border:none;border-radius:var(--r);padding:15px 28px;font-size:16px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s;margin:0 6px}
+.btn-black-lg:hover{background:var(--orange)}
+.btn-outline{background:none;color:var(--black);border:2px solid var(--black);border-radius:var(--r);padding:14px 24px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:all .15s;margin:0 6px}
+.btn-outline:hover{background:var(--black);color:#fff}
+
+footer{background:var(--black);color:#fff;padding:40px 24px 28px}
+.footer-inner{max-width:1080px;margin:0 auto}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:#4b5563}
+.footer-bottom a{font-size:12px;color:var(--orange);text-decoration:none;margin-left:16px}
+.footer-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;font-weight:900;font-size:15px;margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      BuiltNotBroken
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quote.html">Get a quote</a>
+      <a href="areas.html">Service areas</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contractors.html">For contractors</a>
+    </div>
+    <a class="nav-phone" href="tel:4034709749">403-470-9749</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-label">Our story</div>
+    <h1>Built by a contractor.<br/>For <em>everyone</em> the old<br/>platforms forgot.</h1>
+    <p>We got tired of watching homeowners get overcharged and contractors get squeezed. So we built something different.</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<div class="story">
+  <p>BuiltNotBroken started on job sites in Calgary NW. <strong>Evan Thompson</strong>, owner of ET's Quality Stucco & Stone Repairs, spent years doing stucco and parging work across the city — real trades work, real clients, real results.</p>
+
+  <p>What he kept seeing bothered him. Homeowners calling for quotes that never came. Platforms charging contractors $300–$500 a month just to show up in search results. That cost going directly into every quote. Homeowners paying more without knowing why.</p>
+
+  <blockquote>"The platform wasn't helping anyone. It was just taking a cut from both sides."</blockquote>
+
+  <p>So he built BuiltNotBroken. A platform where <strong>homeowners post jobs for free</strong>, contractors pay only when they get a real lead, and nobody's markup is hiding inside your quote.</p>
+
+  <p>We're Calgary-founded, community-driven, and we're not interested in being the next HomeStars. We're interested in being what HomeStars should have been — <strong>a fair marketplace where the best contractor wins, not the one who spent the most on advertising.</strong></p>
+
+  <p>We're early. We're growing. And every job posted on this platform is a vote for a fairer way to hire a contractor in this city.</p>
+</div>
+
+<!-- VALUES -->
+<div class="values">
+  <div class="values-inner">
+    <p class="section-label">What we stand for</p>
+    <h2 class="section-title">Our values</h2>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-icon">🔨</div>
+        <div class="val-title">Trades first</div>
+        <div class="val-desc">We were built by someone who works with their hands. We understand what contractors actually need — and it's not another monthly subscription.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">💰</div>
+        <div class="val-title">No hidden costs</div>
+        <div class="val-desc">What you see is what you pay. No platform markup baked into quotes. No surprise fees. Ever.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🤝</div>
+        <div class="val-title">Community-driven</div>
+        <div class="val-desc">Referrals earn rewards. Neighbours help neighbours find good contractors. This platform grows because the community grows it.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">📋</div>
+        <div class="val-title">Accountability</div>
+        <div class="val-desc">Every contractor carries licensing, WCB, and liability insurance. Every job comes with a warranty. We don't list anyone we wouldn't hire ourselves.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">⚡</div>
+        <div class="val-title">Speed & clarity</div>
+        <div class="val-desc">48-hour quotes. Itemized pricing. No waiting 3 days for a callback that never comes. Homeowners deserve better than that.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon">🏙️</div>
+        <div class="val-title">Calgary proud</div>
+        <div class="val-desc">We know Calgary soil conditions, freeze-thaw cycles, permit requirements, and neighbourhoods. We're not a generic platform dropped on this city — we're from here.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<div class="founder">
+  <div class="founder-card">
+    <div class="founder-avatar">ET</div>
+    <div>
+      <div class="founder-name">Evan Thompson</div>
+      <div class="founder-role">Founder · ET's Quality Stucco & Stone Repairs</div>
+      <div class="founder-bio">
+        Evan is a Calgary-based stucco and parging contractor and the founder of BuiltNotBroken Solutions. He runs <strong>ET's Quality Stucco & Stone Repairs</strong> and has hands-on experience across exterior systems — sand & cement, EIFS, acrylic finishes, foundation parging, and masonry. He built this platform because he lived the problem from both sides: as a contractor trying to get leads without paying a platform ransom, and as someone who saw homeowners get burned by inflated quotes. BuiltNotBroken is his answer to both.
+      </div>
+      <div class="founder-links">
+        <a class="founder-link" href="tel:4034709749">📞 403-470-9749</a>
+        <a class="founder-link" href="mailto:evan@builtnotbrokensolutions.org">✉️ Email Evan</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <h2>BuiltNotBroken by the numbers</h2>
+    <div class="num-grid">
+      <div class="num-item"><div class="num">12</div><div class="num-label">Trades covered</div></div>
+      <div class="num-item"><div class="num">$0</div><div class="num-label">Cost to homeowners</div></div>
+      <div class="num-item"><div class="num">100km</div><div class="num-label">Coverage radius</div></div>
+      <div class="num-item"><div class="num">48hr</div><div class="num-label">Avg. quote turnaround</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Ready to try it?</h2>
+  <p>Post your job free or call us directly. No pressure, no spam.</p>
+  <a class="btn-black-lg" href="index.html#post-job">Post my job free</a>
+  <a class="btn-outline" href="tel:4034709749">Call 403-470-9749</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-logo" href="index.html">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      BuiltNotBroken
+    </a>
+    <div class="footer-bottom">
+      <p>© 2026 BuiltNotBroken Solutions · Calgary, AB · Founded by Evan Thompson</p>
+      <div>
+        <a href="mailto:evan@builtnotbrokensolutions.org">evan@builtnotbrokensolutions.org</a>
+        <a href="tel:4034709749">403-470-9749</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
