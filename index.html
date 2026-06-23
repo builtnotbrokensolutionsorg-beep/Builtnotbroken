@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +23,7 @@
   --r:10px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:var(--black);color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
 
 /* ── BANNER ── */
 .banner{background:var(--black);color:#fff;text-align:center;padding:10px 16px;font-size:13px;font-weight:500;letter-spacing:.01em}
@@ -203,7 +202,7 @@ footer{background:var(--black);color:#fff;padding:48px 24px 32px}
 <section style="padding:80px 24px 64px">
   <div class="hero" style="padding:0">
     <div class="hero-badge"><span></span>No platform fees · Calgary-founded</div>
-    <h1>Hire a contractor.<br/><em>Not their ad spend.</em></h1>
+    <h1>Hire a contractor.<br/><em>Without paying their ads.</em></h1>
     <p class="hero-sub">HomeStars charges contractors $300+/month to show up in your search. That cost lands in your quote. We don't do that.</p>
 
     <div class="split">
@@ -331,16 +330,21 @@ footer{background:var(--black);color:#fff;padding:48px 24px 32px}
     <h2 class="section-title">Every trade.<br/>One platform.</h2>
     <p class="section-sub">From stucco to electrical — post any home repair or renovation job.</p>
     <div class="trades-grid">
-      <div class="trade-pill"><span>🧱</span>Stucco / EIFS</div>
-      <div class="trade-pill"><span>🪨</span>Masonry</div>
+      <div class="trade-pill"><span>🧱</span>Stucco Repairs</div>
+      <div class="trade-pill"><span>🔁</span>Stucco Recoats</div>
+      <div class="trade-pill"><span>🪨</span>Texture Float</div>
+      <div class="trade-pill"><span>✋</span>Hand Texture</div>
+      <div class="trade-pill"><span>📄</span>Paper &amp; Wire</div>
+      <div class="trade-pill"><span>🪵</span>Parging</div>
+      <div class="trade-pill"><span>🧱</span>Brick &amp; Stone</div>
+      <div class="trade-pill"><span>🏗️</span>EIFS / Dryvit</div>
+      <div class="trade-pill"><span>🎨</span>Acrylic Finish</div>
       <div class="trade-pill"><span>⚡</span>Electrical</div>
       <div class="trade-pill"><span>🔧</span>Plumbing</div>
       <div class="trade-pill"><span>❄️</span>HVAC</div>
-      <div class="trade-pill"><span>🪵</span>Framing</div>
       <div class="trade-pill"><span>🏠</span>Drywall</div>
       <div class="trade-pill"><span>🏗️</span>Roofing</div>
       <div class="trade-pill"><span>🧱</span>Concrete</div>
-      <div class="trade-pill"><span>🎨</span>Painting</div>
       <div class="trade-pill"><span>🟫</span>Flooring</div>
       <div class="trade-pill"><span>🌿</span>Landscaping</div>
     </div>
@@ -360,21 +364,13 @@ footer{background:var(--black);color:#fff;padding:48px 24px 32px}
         <input type="email" placeholder="Email address" id="pf-email"/>
         <select id="pf-trade">
           <option value="">What trade do you need?</option>
-          <option>Stucco / EIFS</option>
-          <option>Masonry / Parging</option>
-          <option>Electrical</option>
-          <option>Plumbing</option>
-          <option>HVAC</option>
-          <option>Framing</option>
-          <option>Drywall</option>
-          <option>Roofing</option>
-          <option>Concrete</option>
-          <option>Painting</option>
-          <option>Flooring</option>
-          <option>Landscaping</option>
-          <option>Other / Multiple trades</option>
-        </select>
-        <textarea id="pf-desc" placeholder="Describe the job — size, location, any photos or details help"></textarea>
-        <button class="btn-white" onclick="submitJob()">Post my job — it's free</button>
-      </div>
-      <p clas
+          <optgroup label="— Stucco &amp; Exterior —">
+          <option>Stucco Repairs</option>
+          <option>Stucco Recoat</option>
+          <option>Texture Float</option>
+          <option>Hand Texture</option>
+          <option>Paper &amp; Wire System</option>
+          <option>Parging</option>
+          <option>Brick &amp; Stone</option>
+          <option>EIFS / Dryvit</option>
+          <o
