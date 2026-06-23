@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -347,6 +347,7 @@ footer{background:var(--black);color:#fff;padding:48px 24px 32px}
       <div class="trade-pill"><span>🧱</span>Concrete</div>
       <div class="trade-pill"><span>🟫</span>Flooring</div>
       <div class="trade-pill"><span>🌿</span>Landscaping</div>
+      <div class="trade-pill"><span>🔨</span>Handyman Repairs</div>
     </div>
   </div>
 </section>
@@ -371,6 +372,192 @@ footer{background:var(--black);color:#fff;padding:48px 24px 32px}
           <option>Hand Texture</option>
           <option>Paper &amp; Wire System</option>
           <option>Parging</option>
-          <option>Brick &amp; Stone</option>
-          <option>EIFS / Dryvit</option>
-          <o
+          <option>Brick &amp; <option>EIFS / Dryvit</option>
+          <option>Acrylic Finish</option>
+          </optgroup>
+          <optgroup label="— Other Trades —">
+          <option>Electrical</option>
+          <option>Plumbing</option>
+          <option>HVAC</option>
+          <option>Drywall</option>
+          <option>Roofing</option>
+          <option>Concrete</option>
+          <option>Flooring</option>
+          <option>Landscaping</option>
+          <option>Handyman Repairs</option>
+          <option>Other / Multiple trades</option>
+          </optgroup>
+        </select>
+        <textarea id="pf-desc" placeholder="Describe the job — size, location, any details help"></textarea>
+        <div style="background:rgba(255,255,255,0.1);border:1.5px dashed rgba(255,255,255,0.3);border-radius:var(--r);padding:14px 16px;">
+          <label style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);display:block;margin-bottom:8px;">📷 Add up to 3 photos (optional)</label>
+          <input type="file" id="pf-photos" accept="image/*" multiple style="font-size:13px;color:rgba(255,255,255,0.7);width:100%;background:none;border:none;outline:none;cursor:pointer;" onchange="limitPhotos(this)"/>
+          <div id="photo-warning" style="font-size:12px;color:#fca5a5;margin-top:6px;display:none;">Max 3 photos — extras removed.</div>
+        </div>
+        <button class="btn-white" onclick="submitJob()">Post my job — it's free</button>
+      </div>
+      <p class="form-note">No spam. No account needed. We'll connect you with matched contractors within 48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-inner reveal">
+    <p class="section-label">From real clients</p>
+    <h2 class="section-title">Calgary homeowners<br/>who've used it</h2>
+    <div class="testimonials-grid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"Posted my stucco repair on a Monday. Had three quotes by Wednesday. Picked the one that explained what was actually wrong — not just the cheapest."</p>
+        <div class="tauthor">
+          <div class="avatar">MT</div>
+          <div><div class="aname">Mark T.</div><div class="atrade">Calgary NW · Stucco repair</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"I'd been burned by a HomeStars contractor before. This felt different — the quote was itemized, the contractor showed up on time, and the price didn't change."</p>
+        <div class="tauthor">
+          <div class="avatar">SL</div>
+          <div><div class="aname">Sarah L.</div><div class="atrade">Airdrie · Electrical & drywall</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>"Chimney masonry — done right, done on schedule, and the 2-year warranty was in writing before they started. Referred two neighbours already."</p>
+        <div class="tauthor">
+          <div class="avatar">CA</div>
+          <div><div class="aname">Chris A.</div><div class="atrade">Calgary SE · Masonry</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--surface)" id="faq">
+  <div class="section-inner reveal" style="max-width:680px">
+    <p class="section-label">Common questions</p>
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is it really free to post a job?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Yes, completely free. We never charge homeowners anything — not to post, not to receive quotes, not to hire. Contractors pay a small fee per lead, which is how we keep the lights on without charging you.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How are contractors vetted?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Every contractor in our network carries Alberta trade licensing (where applicable), WCB coverage, and a minimum $2M general liability policy. We verify credentials before accepting anyone onto the platform.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How quickly will I get quotes?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">Most homeowners receive their first quote within 24–48 hours. Urgent jobs (water damage, electrical hazards) can be escalated — call 403-470-9749 directly for same-day response.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I pay through the platform?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">No — you pay the contractor directly via e-Transfer or cheque. We never handle your money and there's no transaction fee or markup added to your invoice.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What's the referral reward?
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a">After your job is posted, you'll get a personal referral link. When a neighbour or friend posts a job through your link and gets matched, you both receive a reward. Details are sent with your confirmation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="/">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          BuiltNotBroken
+        </a>
+        <p>Calgary's fair contractor platform. Community-driven. No hidden fees. Ever.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="#post-job">Post a job</a>
+        <a href="#how">How it works</a>
+        <a href="#trades">Trades covered</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contractors</h4>
+        <a href="contractors.html">Partner program</a>
+        <a href="contractors.html#pricing">Lead pricing</a>
+        <a href="contractors.html#register">Register now</a>
+        <a href="tel:4034709749">403-470-9749</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BuiltNotBroken Solutions · Calgary, Alberta</p>
+      <a href="mailto:builtnotbrokensolutions.org@gmail.com">builtnotbrokensolutions.org@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta">
+  <a href="#post-job">Post your job — free</a>
+</div>
+
+<script>
+// FAQ toggle
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// Job post form
+function submitJob() {
+  const name = document.getElementById('pf-name').value.trim();
+  const phone = document.getElementById('pf-phone').value.trim();
+  const email = document.getElementById('pf-email').value.trim();
+  const trade = document.getElementById('pf-trade').value;
+  const desc = document.getElementById('pf-desc').value.trim();
+  if (!name || !phone || !email || !trade || !desc) {
+    alert('Please fill in all fields so we can match you with the right contractor.');
+    return;
+  }
+  const stuccoTrades = ["Stucco Repairs", "Stucco Recoat", "Texture Float", "Hand Texture", "Paper &amp; Wire System", "Parging", "Brick &amp; Stone", "EIFS / Dryvit", "Acrylic Finish"];
+  const dest = stuccoTrades.includes(trade) ? "yycstuccostonerepair@gmail.com" : "builtnotbrokensolutions.org@gmail.com";
+  const subject = encodeURIComponent("New job: " + trade + " — " + name);
+  const body = encodeURIComponent("Name: " + name + "\nPhone: " + phone + "\nEmail: " + email + "\nTrade: " + trade + "\n\nDetails:\n" + desc);
+  window.location.href = "mailto:" + dest + "?subject=" + subject + "&body=" + body;
+}
+
+function limitPhotos(input) {
+  if (input.files.length > 3) {
+    const dt = new DataTransfer();
+    for (let i = 0; i < 3; i++) dt.items.add(input.files[i]);
+    input.files = dt.files;
+    document.getElementById("photo-warning").style.display = "block";
+  } else {
+    document.getElementById("photo-warning").style.display = "none";
+  }
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
