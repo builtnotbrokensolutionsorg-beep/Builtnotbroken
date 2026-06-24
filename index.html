@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -372,7 +373,7 @@ footer{background:var(--black);color:#fff;padding:48px 24px 32px}
           <option>Hand Texture</option>
           <option>Paper &amp; Wire System</option>
           <option>Parging</option>
-          <option>Brick &amp; <option>EIFS / Dryvit</option>
+          <option>Brick &amp;<option>EIFS / Dryvit</option>
           <option>Acrylic Finish</option>
           </optgroup>
           <optgroup label="— Other Trades —">
@@ -393,6 +394,8 @@ footer{background:var(--black);color:#fff;padding:48px 24px 32px}
           <label style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);display:block;margin-bottom:8px;">📷 Add up to 3 photos (optional)</label>
           <input type="file" id="pf-photos" accept="image/*" multiple style="font-size:13px;color:rgba(255,255,255,0.7);width:100%;background:none;border:none;outline:none;cursor:pointer;" onchange="limitPhotos(this)"/>
           <div id="photo-warning" style="font-size:12px;color:#fca5a5;margin-top:6px;display:none;">Max 3 photos — extras removed.</div>
+          <div id="photo-previews" style="display:none;gap:8px;margin-top:12px;flex-wrap:wrap;"></div>
+          <div id="photo-count" style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:6px;display:none;"></div>
         </div>
         <button class="btn-white" onclick="submitJob()">Post my job — it's free</button>
       </div>
@@ -550,6 +553,28 @@ function limitPhotos(input) {
     document.getElementById("photo-warning").style.display = "block";
   } else {
     document.getElementById("photo-warning").style.display = "none";
+  }
+  const previews = document.getElementById("photo-previews");
+  const count = document.getElementById("photo-count");
+  previews.innerHTML = "";
+  const files = input.files;
+  if (files.length > 0) {
+    previews.style.display = "flex";
+    count.style.display = "block";
+    count.textContent = files.length + " photo" + (files.length > 1 ? "s" : "") + " selected ✓";
+    Array.from(files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.style.cssText = "width:72px;height:72px;object-fit:cover;border-radius:8px;border:2px solid rgba(255,255,255,0.2);";
+        previews.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  } else {
+    previews.style.display = "none";
+    count.style.display = "none";
   }
 }
 
