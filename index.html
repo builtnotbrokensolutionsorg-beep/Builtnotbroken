@@ -428,14 +428,45 @@ function fileToBase64(file){
   });
 }
 
+// Resizes/compresses an image file in-browser before it's ever turned into base64.
+// Phone camera photos can be 8-12MB+ raw, which blows past serverless request body limits.
+// This keeps each photo well under ~500KB so /api/quote and /api/contact never get a 413.
+function compressImage(file, maxDimension = 1280, quality = 0.72){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = (e) => { img.src = e.target.result; };
+    reader.onerror = reject;
+    img.onload = () => {
+      let { width, height } = img;
+      if (width > height && width > maxDimension) {
+        height = Math.round(height * (maxDimension / width));
+        width = maxDimension;
+      } else if (height > maxDimension) {
+        width = Math.round(width * (maxDimension / height));
+        height = maxDimension;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+      const dataUrl = canvas.toDataURL('image/jpeg', quality);
+      resolve(dataUrl);
+    };
+    img.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 async function handlePhotoSelect(inputId, previewId, storeKey){
   const input = document.getElementById(inputId);
   const preview = document.getElementById(previewId);
   const files = Array.from(input.files).slice(0,3);
   const photos = [];
   for(const file of files){
-    const data = await fileToBase64(file);
-    photos.push({name:file.name, type:file.type, data});
+    const data = await compressImage(file);
+    photos.push({name:file.name, type:'image/jpeg', data});
   }
   photoStore[storeKey] = photos;
   preview.innerHTML = photos.map(p=>`<img src="${p.data}" alt="${p.name}">`).join('');
