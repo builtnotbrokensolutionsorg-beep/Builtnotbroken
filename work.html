@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Completed Work — Built Not Broken Solutions</title>
+<meta name="description" content="Recent stucco, masonry, window, and repair jobs completed by Built Not Broken Solutions in Calgary and surrounding areas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1E1B18; --charcoal-light:#2A2521; --sand:#D8CFBE; --sand-light:#EFEAE0;
+    --oxide:#B0451F; --oxide-dark:#8C3517; --slate:#3D4A5C; --slate-light:#5A6B82; --ink:#141210; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--sand-light);line-height:1.5;}
+  h1,h2,h3,.display{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:0.02em;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  header{position:sticky;top:0;z-index:100;background:var(--charcoal);color:var(--sand-light);border-bottom:3px solid var(--oxide);}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto;flex-wrap:wrap;gap:10px;}
+  .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0.03em;}
+  .logo span{color:var(--oxide);}
+  nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap;}
+  nav a{font-size:0.92rem;font-weight:500;opacity:0.9;}
+  nav a:hover{opacity:1;color:var(--oxide);}
+  .phone-pill{background:var(--oxide);color:var(--white);padding:9px 18px;border-radius:2px;font-weight:600;font-family:'Oswald',sans-serif;letter-spacing:0.03em;white-space:nowrap;}
+
+  .page-hero{background:linear-gradient(160deg,var(--charcoal) 0%,var(--charcoal-light) 60%,var(--slate) 140%);color:var(--sand-light);padding:56px 24px 44px;text-align:center;}
+  .page-hero .eyebrow{color:var(--oxide);font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:0.15em;font-size:0.85rem;margin-bottom:12px;}
+  .page-hero h1{font-size:clamp(1.9rem,4vw,2.8rem);}
+  .page-hero p{color:var(--sand);margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto;}
+
+  section{padding:50px 24px;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;max-width:1180px;margin:0 auto;}
+  .gallery-card{background:var(--white);border:1px solid #E3DCCB;overflow:hidden;position:relative;}
+  .gallery-card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#ddd;}
+  .gallery-card .card-body{padding:14px 16px;}
+  .gallery-card .trade-tag{display:inline-block;font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:0.05em;color:var(--oxide);text-transform:uppercase;margin-bottom:4px;}
+  .gallery-card .caption{font-size:0.92rem;color:var(--charcoal);}
+  .gallery-empty{text-align:center;color:#8A8272;padding:40px 0;grid-column:1/-1;}
+
+  .upload-section{background:var(--charcoal);color:var(--sand-light);}
+  .upload-section h2{color:var(--white);text-align:center;margin-bottom:6px;}
+  .upload-section .sub{text-align:center;color:var(--sand);margin-bottom:32px;}
+  .upload-wrap{max-width:520px;margin:0 auto;background:var(--charcoal-light);border:1px solid rgba(216,207,190,0.15);padding:30px;border-radius:2px;}
+  .field-row{margin-bottom:18px;}
+  .field-label{display:block;font-family:'Oswald',sans-serif;font-size:0.85rem;letter-spacing:0.05em;margin-bottom:8px;color:var(--sand);}
+  input[type=text],input[type=password],select,textarea{width:100%;padding:12px 14px;background:var(--charcoal);border:1px solid #4A443C;color:var(--sand-light);font-family:inherit;font-size:0.95rem;border-radius:2px;}
+  .photo-upload{border:2px dashed #4A443C;padding:22px;text-align:center;border-radius:2px;}
+  .photo-upload input[type=file]{display:none;}
+  .photo-upload label{display:inline-block;background:var(--slate);color:var(--white);padding:10px 20px;font-family:'Oswald',sans-serif;font-size:0.85rem;border-radius:2px;}
+  .photo-preview{margin-top:14px;}
+  .photo-preview img{width:100%;max-height:220px;object-fit:cover;border-radius:2px;border:1px solid #4A443C;}
+  .btn{display:block;width:100%;padding:15px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;font-size:0.95rem;border-radius:2px;background:var(--oxide);color:var(--white);text-align:center;}
+  .btn:hover{background:var(--oxide-dark);}
+  .btn:disabled{opacity:0.6;}
+  .status-msg{margin-top:14px;font-size:0.9rem;text-align:center;display:none;}
+  .status-msg.show{display:block;}
+  .status-msg.success{color:#8FBF8F;}
+  .status-msg.error{color:#E08A6E;}
+
+  footer{background:var(--ink);color:#8A8272;text-align:center;padding:32px 24px;font-size:0.85rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">BUILT<span>NOT</span>BROKEN</a>
+    <nav>
+      <a href="index.html#trades">Trades</a>
+      <a href="index.html#quote">AI Quote</a>
+      <a href="work.html">Completed Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="tel:4034709749" class="phone-pill">403-470-9749</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="eyebrow">Recent Jobs</div>
+  <h1>Completed Work</h1>
+  <p>A running look at repairs and installs finished across Calgary — stucco, masonry, windows, and everything in between.</p>
+</section>
+
+<section>
+  <div class="gallery-grid" id="gallery-grid">
+    <div class="gallery-empty">Loading recent jobs...</div>
+  </div>
+</section>
+
+<section class="upload-section">
+  <h2>Add a Job Photo</h2>
+  <p class="sub">For Evan &amp; crew — add a completed job straight from the site.</p>
+  <div class="upload-wrap">
+    <div class="field-row">
+      <label class="field-label" for="upload-pin">PIN</label>
+      <input type="password" id="upload-pin" placeholder="Enter upload PIN" inputmode="numeric">
+    </div>
+    <div class="field-row">
+      <label class="field-label" for="upload-trade">Trade</label>
+      <select id="upload-trade">
+        <option value="Stucco & EIFS">Stucco &amp; EIFS</option>
+        <option value="Masonry & Stone">Masonry &amp; Stone</option>
+        <option value="Windows & Doors">Windows &amp; Doors</option>
+        <option value="Electrical">Electrical</option>
+        <option value="Plumbing">Plumbing</option>
+        <option value="HVAC">HVAC</option>
+        <option value="Framing">Framing</option>
+        <option value="Drywall">Drywall</option>
+        <option value="Roofing">Roofing</option>
+        <option value="Concrete">Concrete</option>
+        <option value="Painting">Painting</option>
+        <option value="Flooring">Flooring</option>
+      </select>
+    </div>
+    <div class="field-row">
+      <label class="field-label" for="upload-caption">Caption</label>
+      <input type="text" id="upload-caption" placeholder="e.g. Full EIFS repair, NW Calgary">
+    </div>
+    <div class="field-row">
+      <span class="field-label">Photo</span>
+      <div class="photo-upload">
+        <input type="file" id="upload-photo-input" accept="image/*">
+        <label for="upload-photo-input">Choose Photo</label>
+        <div class="photo-preview" id="upload-preview"></div>
+      </div>
+    </div>
+    <button class="btn" id="upload-btn" onclick="submitGalleryPhoto()">Add to Completed Work</button>
+    <div class="status-msg" id="upload-status"></div>
+  </div>
+</section>
+
+<footer>
+  <strong>Built Not Broken Solutions</strong> · Calgary, AB · 403-470-9749
+</footer>
+
+<script>
+const GALLERY_JSON_URL = 'https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/data/gallery.json';
+let pendingPhoto = null;
+
+async function loadGallery(){
+  const grid = document.getElementById('gallery-grid');
+  try{
+    const res = await fetch(GALLERY_JSON_URL + '?t=' + Date.now());
+    const data = await res.json();
+    if(!Array.isArray(data) || data.length === 0){
+      grid.innerHTML = '<div class="gallery-empty">No completed jobs posted yet — check back soon.</div>';
+      return;
+    }
+    grid.innerHTML = data.map(item => `
+      <div class="gallery-card">
+        <img src="${item.thumb || item.url}" alt="${item.caption || 'Completed job'}" loading="lazy">
+        <div class="card-body">
+          ${item.trade ? `<span class="trade-tag">${item.trade}</span>` : ''}
+          <div class="caption">${item.caption || ''}</div>
+        </div>
+      </div>
+    `).join('');
+  }catch(err){
+    grid.innerHTML = '<div class="gallery-empty">Couldn\'t load photos right now — please refresh.</div>';
+  }
+}
+
+function compressImage(file, maxDimension = 1280, quality = 0.72){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = (e) => { img.src = e.target.result; };
+    reader.onerror = reject;
+    img.onload = () => {
+      let { width, height } = img;
+      if (width > height && width > maxDimension) {
+        height = Math.round(height * (maxDimension / width));
+        width = maxDimension;
+      } else if (height > maxDimension) {
+        width = Math.round(width * (maxDimension / height));
+        height = maxDimension;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width; canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+      resolve(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+document.getElementById('upload-photo-input').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const data = await compressImage(file);
+  pendingPhoto = { name: file.name, type: 'image/jpeg', data };
+  document.getElementById('upload-preview').innerHTML = `<img src="${data}" alt="preview">`;
+});
+
+async function submitGalleryPhoto(){
+  const pin = document.getElementById('upload-pin').value.trim();
+  const trade = document.getElementById('upload-trade').value;
+  const caption = document.getElementById('upload-caption').value.trim();
+  const statusEl = document.getElementById('upload-status');
+  const btn = document.getElementById('upload-btn');
+
+  statusEl.className = 'status-msg';
+  if(!pin){ statusEl.textContent = 'Enter the PIN.'; statusEl.className = 'status-msg show error'; return; }
+  if(!pendingPhoto){ statusEl.textContent = 'Choose a photo first.'; statusEl.className = 'status-msg show error'; return; }
+  if(!caption){ statusEl.textContent = 'Add a short caption.'; statusEl.className = 'status-msg show error'; return; }
+
+  btn.disabled = true; btn.textContent = 'Uploading...';
+  try{
+    const res = await fetch('/api/gallery-add', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ pin, trade, caption, photo: pendingPhoto })
+    });
+    const d = await res.json();
+    if(d.success){
+      statusEl.textContent = '✅ Added! It may take a minute to appear below.';
+      statusEl.className = 'status-msg show success';
+      document.getElementById('upload-caption').value = '';
+      document.getElementById('upload-preview').innerHTML = '';
+      pendingPhoto = null;
+      setTimeout(loadGallery, 4000);
+    } else {
+      throw new Error(d.error || 'Unknown error');
+    }
+  }catch(err){
+    statusEl.textContent = 'Upload failed — check the PIN and try again.';
+    statusEl.className = 'status-msg show error';
+  }
+  btn.disabled = false; btn.textContent = 'Add to Completed Work';
+}
+
+loadGallery();
+</script>
+</body>
+</html>
