@@ -124,7 +124,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: FROM_EMAIL,
         to: NOTIFY_EMAIL,
-        reply_to: email || undefined,
+        reply_to: isValidEmail(email) ? email : undefined,
         subject,
         html,
       }),
@@ -142,6 +142,11 @@ export default async function handler(req, res) {
     console.error('contact.js error:', err);
     return res.status(500).json({ error: 'Unexpected server error sending message.' });
   }
+}
+
+function isValidEmail(str) {
+  if (!str) return false;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(str).trim());
 }
 
 function escapeHtml(str) {
