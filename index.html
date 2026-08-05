@@ -30,8 +30,6 @@
   img{max-width:100%;display:block;}
   .container{max-width:1180px;margin:0 auto;padding:0 24px;}
   :focus-visible{outline:3px solid var(--oxide);outline-offset:2px;}
-
-  /* ---------- HEADER ---------- */
   header{position:sticky;top:0;z-index:100;background:var(--charcoal);color:var(--sand-light);border-bottom:3px solid var(--oxide);}
   .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto;flex-wrap:wrap;gap:10px;}
   .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0.03em;}
@@ -41,8 +39,6 @@
   nav a:hover{opacity:1;color:var(--oxide);}
   .phone-pill{background:var(--oxide);color:var(--white);padding:9px 18px;border-radius:2px;font-weight:600;font-family:'Oswald',sans-serif;letter-spacing:0.03em;white-space:nowrap;}
   .phone-pill:hover{background:var(--oxide-dark);}
-
-  /* ---------- HERO ---------- */
   .hero{background:linear-gradient(160deg,var(--charcoal) 0%,var(--charcoal-light) 60%,var(--slate) 140%);color:var(--sand-light);padding:80px 24px 70px;position:relative;overflow:hidden;}
   .hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border:2px solid rgba(176,69,31,0.25);border-radius:50%;}
   .hero-inner{max-width:1180px;margin:0 auto;position:relative;}
@@ -58,15 +54,11 @@
   .btn-outline:hover{background:var(--sand-light);color:var(--charcoal);}
   .hero-principle{margin-top:44px;padding-top:24px;border-top:1px solid rgba(216,207,190,0.25);font-family:'Oswald',sans-serif;font-size:1.05rem;color:var(--sand);letter-spacing:0.02em;}
   .hero-principle strong{color:var(--white);}
-
-  /* ---------- SECTION HEADERS ---------- */
   section{padding:70px 24px;}
   .section-head{max-width:640px;margin:0 auto 44px;text-align:center;}
   .section-head .eyebrow{color:var(--oxide-dark);}
   .section-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);color:var(--charcoal);margin-bottom:10px;}
   .section-head p{color:#5A5347;font-size:1.05rem;}
-
-  /* ---------- TRADES (repair-ticket cards) ---------- */
   .trades-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;max-width:1180px;margin:0 auto;}
   .trade-card{background:var(--white);border:1px solid #E3DCCB;border-left:5px solid var(--oxide);padding:22px 20px;position:relative;cursor:pointer;transition:box-shadow .15s ease, border-color .15s ease;}
   .trade-card:hover,.trade-card.selected{box-shadow:0 8px 24px rgba(30,27,24,0.12);border-left-color:var(--slate);}
@@ -78,8 +70,6 @@
   .trade-card li:first-child{border-top:none;}
   .trade-card .select-tag{display:inline-block;margin-top:12px;font-family:'Oswald',sans-serif;font-size:0.78rem;font-weight:600;color:var(--oxide);letter-spacing:0.05em;}
   .trade-card.selected .select-tag::before{content:"✓ ";}
-
-  /* ---------- QUOTE ENGINE ---------- */
   .quote-section{background:var(--charcoal);color:var(--sand-light);}
   .quote-section .section-head h2{color:var(--white);}
   .quote-section .section-head p{color:var(--sand);}
@@ -92,7 +82,6 @@
   .selected-trades-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
   .trade-chip{background:var(--oxide);color:var(--white);font-size:0.8rem;padding:5px 12px;border-radius:2px;font-weight:500;}
   .trade-chip.empty{background:transparent;border:1px dashed #5A544A;color:#8A8272;}
-
   .photo-upload{border:2px dashed #4A443C;padding:22px;text-align:center;border-radius:2px;}
   .photo-upload input[type=file]{display:none;}
   .photo-upload label{display:inline-block;background:var(--slate);color:var(--white);padding:10px 20px;font-family:'Oswald',sans-serif;font-size:0.85rem;letter-spacing:0.03em;border-radius:2px;}
@@ -100,7 +89,6 @@
   .photo-upload .hint{font-size:0.8rem;color:#8A8272;margin-top:10px;}
   .photo-previews{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
   .photo-previews img{width:72px;height:72px;object-fit:cover;border-radius:2px;border:1px solid #4A443C;}
-
   .btn-block{width:100%;padding:16px;margin-top:8px;}
   .ai-result{margin-top:24px;background:var(--charcoal);border-left:4px solid var(--oxide);padding:20px;font-size:0.95rem;white-space:pre-wrap;border-radius:2px;display:none;}
   .ai-result.show{display:block;}
@@ -108,8 +96,6 @@
   .ai-loading.show{display:flex;}
   .spinner{width:16px;height:16px;border:2px solid #4A443C;border-top-color:var(--oxide);border-radius:50%;animation:spin 0.8s linear infinite;}
   @keyframes spin{to{transform:rotate(360deg);}}
-
-  /* ---------- CONTRACTOR PORTAL ---------- */
   .portal-section{background:var(--sand-light);}
   .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:900px;margin:0 auto 40px;}
   .price-card{background:var(--white);border:1px solid #E3DCCB;padding:28px 24px;text-align:center;border-top:4px solid var(--slate);}
@@ -121,8 +107,6 @@
   .portal-form .field-label{color:var(--charcoal);}
   .portal-form input,.portal-form textarea{background:var(--sand-light);color:var(--ink);border:1px solid #D6CDBA;}
   .portal-form input::placeholder,.portal-form textarea::placeholder{color:#9A917E;}
-
-  /* ---------- CONTACT ---------- */
   .contact-section{background:var(--white);}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1000px;margin:0 auto;}
   @media (max-width:800px){.contact-grid{grid-template-columns:1fr;}}
@@ -133,8 +117,6 @@
   .contact-form{background:var(--sand-light);padding:28px;border-radius:2px;}
   .contact-form .field-label{color:var(--charcoal);}
   .contact-form input,.contact-form textarea{background:var(--white);color:var(--ink);border:1px solid #D6CDBA;}
-
-  /* ---------- LEAD PIPELINE (admin-visible panel) ---------- */
   .pipeline-section{background:var(--charcoal-light);color:var(--sand-light);}
   .pipeline-section .section-head h2{color:var(--white);}
   .pipeline-section .section-head p{color:var(--sand);}
@@ -145,15 +127,11 @@
   .lead-row .lead-name{font-weight:600;}
   .lead-row .lead-meta{color:#A79E8C;}
   .pipeline-empty{text-align:center;color:#8A8272;font-size:0.9rem;}
-
-  /* ---------- TOAST ---------- */
   #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);background:var(--charcoal);color:var(--white);padding:14px 24px;border-radius:2px;font-size:0.92rem;border-left:4px solid var(--oxide);box-shadow:0 8px 24px rgba(0,0,0,0.3);transition:transform .25s ease;z-index:1000;max-width:90vw;}
   #toast.show{transform:translateX(-50%) translateY(0);}
   #toast.error{border-left-color:#C0392B;}
-
   footer{background:var(--ink);color:#8A8272;text-align:center;padding:32px 24px;font-size:0.85rem;}
   footer strong{color:var(--sand);}
-
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
   @media (max-width:640px){
     .header-inner{justify-content:center;}
@@ -164,7 +142,7 @@
 </style>
 </head>
 <body>
-
+ 
 <header>
   <div class="header-inner">
     <div class="logo">BUILT<span>NOT</span>BROKEN</div>
@@ -178,12 +156,12 @@
     <a href="tel:4034709749" class="phone-pill">403-470-9749</a>
   </div>
 </header>
-
+ 
 <section class="hero">
   <div class="hero-inner">
     <div class="eyebrow">Calgary &amp; Surrounding Areas</div>
     <h1>Repairs done right, so you never pay for them twice.</h1>
-    <p>Built Not Broken Solutions connects Calgary homeowners, builders, and property managers with subtrade specialists who fix the root problem — not just the symptom. Stucco, masonry, windows, and every trade in between.</p>
+    <p>Built Not Broken Solutions is a Calgary subtrade marketing platform built by ET's Quality Stucco Stone Repair — a stucco and masonry specialist with real crews and real jobs. The goal: connect homeowners, builders, and property managers with the right trade, fast, with honest pricing. No middlemen, no runaround.</p>
     <div class="hero-ctas">
       <a href="#quote" class="btn btn-primary">Get an Instant AI Quote</a>
       <a href="tel:4034709749" class="btn btn-outline">Call 403-470-9749</a>
@@ -191,18 +169,16 @@
     <div class="hero-principle">"<strong>You pay cheap, you get cheap.</strong>" Quality workmanship costs more upfront — and far less over the life of your building.</div>
   </div>
 </section>
-
+ 
 <section id="trades">
   <div class="section-head">
     <div class="eyebrow">12 Trades, One Call</div>
     <h2>What we repair</h2>
     <p>Select any trade to auto-fill your quote request below — or call if you'd rather talk it through.</p>
   </div>
-  <div class="trades-grid" id="trades-grid">
-    <!-- trade cards injected by JS from TRADES array -->
-  </div>
+  <div class="trades-grid" id="trades-grid"></div>
 </section>
-
+ 
 <section class="quote-section" id="quote">
   <div class="section-head">
     <div class="eyebrow">AI Quote Engine</div>
@@ -242,7 +218,7 @@
     <div class="ai-result" id="ai-result"></div>
   </div>
 </section>
-
+ 
 <section class="portal-section" id="contractors">
   <div class="section-head">
     <div class="eyebrow">Contractor Portal</div>
@@ -297,7 +273,7 @@
     <div id="contractor-success" style="display:none;margin-top:16px;color:var(--slate);font-weight:600;">✅ Application received — we'll be in touch soon.</div>
   </div>
 </section>
-
+ 
 <section class="pipeline-section">
   <div class="section-head">
     <div class="eyebrow">For Evan</div>
@@ -307,7 +283,7 @@
   <button class="pipeline-toggle" onclick="togglePipeline()">Show / Hide Recent Leads</button>
   <div class="pipeline-list" id="pipeline-list"></div>
 </section>
-
+ 
 <section class="contact-section" id="contact">
   <div class="section-head">
     <div class="eyebrow">Get In Touch</div>
@@ -316,7 +292,7 @@
   <div class="contact-grid">
     <div class="contact-info">
       <h3>Built Not Broken Solutions</h3>
-      <p>Calgary, Alberta &amp; surrounding areas</p>
+      <p>A platform built by <strong>ET's Quality Stucco Stone Repair</strong> · Calgary, AB &amp; surrounding areas</p>
       <div class="big-phone">403-470-9749</div>
       <p>Serving homeowners, builders, developers, property managers, and general contractors.</p>
       <div class="payment-note">Payment accepted by e-Transfer or cheque.</div>
@@ -350,13 +326,13 @@
     </div>
   </div>
 </section>
-
+ 
 <footer>
-  <strong>Built Not Broken Solutions</strong> · Calgary, AB · 403-470-9749 · e-Transfer &amp; cheque accepted
+  <strong>Built Not Broken Solutions</strong> · A platform by ET's Quality Stucco Stone Repair · Calgary, AB · 403-470-9749 · e-Transfer &amp; cheque accepted
 </footer>
-
+ 
 <div id="toast"></div>
-
+ 
 <script>
 const TRADES = [
   {id:'stucco', name:'Stucco &amp; EIFS Repair', desc:'Water intrusion, cracking, and coat failures.', items:['Sand &amp; cement scratch coat','Brown coat repair','Acrylic finish repair','Full EIFS system repair']},
@@ -372,261 +348,121 @@ const TRADES = [
   {id:'painting', name:'Painting', desc:'Interior and exterior finish work.', items:['Exterior repaint','Interior touch-ups &amp; full rooms','Trim &amp; detail work','Prep &amp; priming']},
   {id:'flooring', name:'Flooring', desc:'Repair and replacement, all materials.', items:['Hardwood repair &amp; refinish','Tile repair','Laminate &amp; vinyl','Subfloor repair']},
 ];
-
 const selectedTrades = new Set();
 const photoStore = {};
-
 function renderTrades(){
   const grid = document.getElementById('trades-grid');
-  grid.innerHTML = TRADES.map((t,i)=>`
-    <div class="trade-card" id="card-${t.id}" onclick="toggleTrade('${t.id}')">
-      <span class="ticket-no">№ ${String(i+1).padStart(2,'0')}</span>
-      <h3>${t.name}</h3>
-      <p>${t.desc}</p>
-      <ul>${t.items.map(it=>`<li>${it}</li>`).join('')}</ul>
-      <span class="select-tag">Select for quote</span>
-    </div>
-  `).join('');
+  grid.innerHTML = TRADES.map((t,i)=>`<div class="trade-card" id="card-${t.id}" onclick="toggleTrade('${t.id}')"><span class="ticket-no">№ ${String(i+1).padStart(2,'0')}</span><h3>${t.name}</h3><p>${t.desc}</p><ul>${t.items.map(it=>`<li>${it}</li>`).join('')}</ul><span class="select-tag">Select for quote</span></div>`).join('');
 }
-
 function toggleTrade(id){
   const card = document.getElementById('card-'+id);
-  if(selectedTrades.has(id)){
-    selectedTrades.delete(id);
-    card.classList.remove('selected');
-  } else {
-    selectedTrades.add(id);
-    card.classList.add('selected');
-  }
+  if(selectedTrades.has(id)){selectedTrades.delete(id);card.classList.remove('selected');}
+  else{selectedTrades.add(id);card.classList.add('selected');}
   renderSelectedChips();
 }
-
 function renderSelectedChips(){
   const wrap = document.getElementById('selected-trades-list');
-  if(selectedTrades.size === 0){
-    wrap.innerHTML = '<span class="trade-chip empty">Tap a trade above, or just describe your issue below</span>';
-    return;
-  }
-  wrap.innerHTML = [...selectedTrades].map(id=>{
-    const t = TRADES.find(x=>x.id===id);
-    return `<span class="trade-chip">${t.name}</span>`;
-  }).join('');
+  if(selectedTrades.size===0){wrap.innerHTML='<span class="trade-chip empty">Tap a trade above, or just describe your issue below</span>';return;}
+  wrap.innerHTML=[...selectedTrades].map(id=>{const t=TRADES.find(x=>x.id===id);return`<span class="trade-chip">${t.name}</span>`;}).join('');
 }
-
-function showToast(msg, ok=true){
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = ok ? 'show' : 'show error';
-  setTimeout(()=>{ el.className = el.className.replace('show',''); }, 4200);
+function showToast(msg,ok=true){
+  const el=document.getElementById('toast');el.textContent=msg;el.className=ok?'show':'show error';
+  setTimeout(()=>{el.className=el.className.replace('show','');},4200);
 }
-
-function fileToBase64(file){
+function compressImage(file,maxDimension=1280,quality=0.72){
   return new Promise((resolve,reject)=>{
-    const r = new FileReader();
-    r.onload = ()=>resolve(r.result);
-    r.onerror = reject;
-    r.readAsDataURL(file);
+    const img=new Image();const reader=new FileReader();
+    reader.onload=(e)=>{img.src=e.target.result;};reader.onerror=reject;
+    img.onload=()=>{
+      let{width,height}=img;
+      if(width>height&&width>maxDimension){height=Math.round(height*(maxDimension/width));width=maxDimension;}
+      else if(height>maxDimension){width=Math.round(width*(maxDimension/height));height=maxDimension;}
+      const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
+      const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,width,height);
+      resolve(canvas.toDataURL('image/jpeg',quality));
+    };img.onerror=reject;reader.readAsDataURL(file);
   });
 }
-
-// Resizes/compresses an image file in-browser before it's ever turned into base64.
-// Phone camera photos can be 8-12MB+ raw, which blows past serverless request body limits.
-// This keeps each photo well under ~500KB so /api/quote and /api/contact never get a 413.
-function compressImage(file, maxDimension = 1280, quality = 0.72){
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    const reader = new FileReader();
-    reader.onload = (e) => { img.src = e.target.result; };
-    reader.onerror = reject;
-    img.onload = () => {
-      let { width, height } = img;
-      if (width > height && width > maxDimension) {
-        height = Math.round(height * (maxDimension / width));
-        width = maxDimension;
-      } else if (height > maxDimension) {
-        width = Math.round(width * (maxDimension / height));
-        height = maxDimension;
-      }
-      const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, width, height);
-      const dataUrl = canvas.toDataURL('image/jpeg', quality);
-      resolve(dataUrl);
-    };
-    img.onerror = reject;
-    reader.readAsDataURL(file);
-  });
+async function handlePhotoSelect(inputId,previewId,storeKey){
+  const input=document.getElementById(inputId);const preview=document.getElementById(previewId);
+  const files=Array.from(input.files).slice(0,3);const photos=[];
+  for(const file of files){const data=await compressImage(file);photos.push({name:file.name,type:'image/jpeg',data});}
+  photoStore[storeKey]=photos;preview.innerHTML=photos.map(p=>`<img src="${p.data}" alt="${p.name}">`).join('');
 }
-
-async function handlePhotoSelect(inputId, previewId, storeKey){
-  const input = document.getElementById(inputId);
-  const preview = document.getElementById(previewId);
-  const files = Array.from(input.files).slice(0,3);
-  const photos = [];
-  for(const file of files){
-    const data = await compressImage(file);
-    photos.push({name:file.name, type:'image/jpeg', data});
-  }
-  photoStore[storeKey] = photos;
-  preview.innerHTML = photos.map(p=>`<img src="${p.data}" alt="${p.name}">`).join('');
-}
-
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded',()=>{
   renderTrades();
-  document.getElementById('quote-photo-input').addEventListener('change', ()=>handlePhotoSelect('quote-photo-input','quote-photo-previews','quote-photos'));
-  document.getElementById('contact-photo-input').addEventListener('change', ()=>handlePhotoSelect('contact-photo-input','contact-previews','contact-photos'));
+  document.getElementById('quote-photo-input').addEventListener('change',()=>handlePhotoSelect('quote-photo-input','quote-photo-previews','quote-photos'));
+  document.getElementById('contact-photo-input').addEventListener('change',()=>handlePhotoSelect('contact-photo-input','contact-previews','contact-photos'));
   renderPipeline();
 });
-
 function saveLead(entry){
-  const leads = JSON.parse(localStorage.getItem('bnb_leads')||'[]');
-  leads.unshift({...entry, time: new Date().toLocaleString()});
-  localStorage.setItem('bnb_leads', JSON.stringify(leads.slice(0,50)));
-  renderPipeline();
+  const leads=JSON.parse(localStorage.getItem('bnb_leads')||'[]');
+  leads.unshift({...entry,time:new Date().toLocaleString()});
+  localStorage.setItem('bnb_leads',JSON.stringify(leads.slice(0,50)));renderPipeline();
 }
-
 function renderPipeline(){
-  const leads = JSON.parse(localStorage.getItem('bnb_leads')||'[]');
-  const list = document.getElementById('pipeline-list');
-  if(leads.length===0){
-    list.innerHTML = '<div class="pipeline-empty">No submissions yet on this device.</div>';
-    return;
-  }
-  list.innerHTML = leads.map(l=>`
-    <div class="lead-row">
-      <span class="lead-name">${l.name||'Unknown'} — ${l.type||'lead'}</span>
-      <span class="lead-meta">${l.trade ? l.trade+' · ' : ''}${l.time}</span>
-    </div>
-  `).join('');
+  const leads=JSON.parse(localStorage.getItem('bnb_leads')||'[]');
+  const list=document.getElementById('pipeline-list');
+  if(leads.length===0){list.innerHTML='<div class="pipeline-empty">No submissions yet on this device.</div>';return;}
+  list.innerHTML=leads.map(l=>`<div class="lead-row"><span class="lead-name">${l.name||'Unknown'} — ${l.type||'lead'}</span><span class="lead-meta">${l.trade?l.trade+' · ':''}${l.time}</span></div>`).join('');
 }
-
-function togglePipeline(){
-  document.getElementById('pipeline-list').classList.toggle('show');
-}
-
+function togglePipeline(){document.getElementById('pipeline-list').classList.toggle('show');}
 async function getAIQuote(){
-  const desc = document.getElementById('quote-desc').value.trim();
-  const name = document.getElementById('quote-name').value.trim();
-  const contact = document.getElementById('quote-contact').value.trim();
-  if(!desc){ showToast('Please describe the issue first.', false); return; }
-
-  const trades = [...selectedTrades].map(id=>TRADES.find(t=>t.id===id).name);
-  const btn = document.getElementById('quote-submit-btn');
-  const loading = document.getElementById('ai-loading');
-  const resultEl = document.getElementById('ai-result');
-  btn.disabled = true;
-  loading.classList.add('show');
-  resultEl.classList.remove('show');
-
-  const photos = photoStore['quote-photos'] || [];
-  const contentBlocks = [];
-  for(const p of photos){
-    const base64Data = p.data.split(',').pop();
-    contentBlocks.push({type:'image', source:{type:'base64', media_type: p.type || 'image/jpeg', data: base64Data}});
-  }
-  contentBlocks.push({type:'text', text:
-    `You are the AI quote assistant for Built Not Broken Solutions, a Calgary subtrade repair company. `+
-    `Give the customer a friendly, realistic ballpark estimate range in CAD for the described repair, a short explanation of likely scope, and note that a final price requires an in-person estimate. `+
-    `Trades involved: ${trades.length ? trades.join(', ') : 'not specified'}. `+
-    `Customer description: ${desc}. Keep the response under 150 words, plain text, no markdown headers.`
-  });
-
+  const desc=document.getElementById('quote-desc').value.trim();
+  const name=document.getElementById('quote-name').value.trim();
+  const contact=document.getElementById('quote-contact').value.trim();
+  if(!desc){showToast('Please describe the issue first.',false);return;}
+  const trades=[...selectedTrades].map(id=>TRADES.find(t=>t.id===id).name);
+  const btn=document.getElementById('quote-submit-btn');const loading=document.getElementById('ai-loading');const resultEl=document.getElementById('ai-result');
+  btn.disabled=true;loading.classList.add('show');resultEl.classList.remove('show');
+  const photos=photoStore['quote-photos']||[];const contentBlocks=[];
+  for(const p of photos){const base64Data=p.data.split(',').pop();contentBlocks.push({type:'image',source:{type:'base64',media_type:p.type||'image/jpeg',data:base64Data}});}
+  contentBlocks.push({type:'text',text:`You are the AI quote assistant for Built Not Broken Solutions, a Calgary subtrade repair company built by ET's Quality Stucco Stone Repair. Give the customer a friendly, realistic ballpark estimate range in CAD for the described repair, a short explanation of likely scope, and note that a final price requires an in-person estimate. Trades involved: ${trades.length?trades.join(', '):'not specified'}. Customer description: ${desc}. Keep the response under 150 words, plain text, no markdown headers.`});
   try{
-    const response = await fetch('/api/quote', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 500,
-        messages: [{ role:'user', content: contentBlocks }]
-      })
-    });
-    const data = await response.json();
-    if(!response.ok) throw new Error(data.error || 'Quote request failed');
-    const text = (data.content || []).filter(b=>b.type==='text').map(b=>b.text).join('\n') || 'No estimate returned — please call 403-470-9749.';
-    resultEl.textContent = text;
-    resultEl.classList.add('show');
-
-    // Also send full lead details to the office via /api/contact
-    fetch('/api/contact', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({type:'quote', name, phone:contact, email:contact, message:desc, trade:trades.join(', '), photos})
-    }).catch(()=>{});
-
-    saveLead({type:'quote', name: name||'(no name)', trade: trades.join(', ')});
+    const response=await fetch('/api/quote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:500,messages:[{role:'user',content:contentBlocks}]})});
+    const data=await response.json();
+    if(!response.ok)throw new Error(data.error||'Quote request failed');
+    const text=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n')||'No estimate returned — please call 403-470-9749.';
+    resultEl.textContent=text;resultEl.classList.add('show');
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'quote',name,phone:contact,email:contact,message:desc,trade:trades.join(', '),photos})}).catch(()=>{});
+    saveLead({type:'quote',name:name||'(no name)',trade:trades.join(', ')});
     showToast('✅ Quote generated — we\'ve also logged your request.');
   }catch(err){
-    resultEl.textContent = 'We couldn\'t generate an instant estimate right now. Call us directly at 403-470-9749 and we\'ll quote it in person.';
-    resultEl.classList.add('show');
-    showToast('AI quote unavailable — request logged, we\'ll follow up.', false);
-    saveLead({type:'quote (offline)', name: name||'(no name)', trade: trades.join(', ')});
+    resultEl.textContent='We couldn\'t generate an instant estimate right now. Call us directly at 403-470-9749 and we\'ll quote it in person.';
+    resultEl.classList.add('show');showToast('AI quote unavailable — request logged, we\'ll follow up.',false);
+    saveLead({type:'quote (offline)',name:name||'(no name)',trade:trades.join(', ')});
   }
-  btn.disabled = false;
-  loading.classList.remove('show');
+  btn.disabled=false;loading.classList.remove('show');
 }
-
 async function submitContractor(){
-  const name = document.getElementById('c-name').value.trim();
-  const company = document.getElementById('c-company').value.trim();
-  const phone = document.getElementById('c-phone').value.trim();
-  const email = document.getElementById('c-email').value.trim();
-  const trade = document.getElementById('c-trade').value.trim();
-  const areas = document.getElementById('c-areas').value.trim();
-  const plan = document.getElementById('c-plan').value;
-  if(!name || !phone){ showToast('Please enter your name and phone.', false); return; }
-
-  const btn = document.getElementById('contractor-btn');
-  btn.disabled = true; btn.textContent = 'Sending…';
-  try{
-    await fetch('/api/contact', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({type:'contractor', name, company, phone, email, trade, address: areas, message: `Preferred pricing: ${plan}`})
-    });
-  }catch(e){}
-  document.getElementById('contractor-success').style.display = 'block';
-  saveLead({type:'contractor', name, trade});
-  btn.disabled = false; btn.textContent = 'Apply to Partner Network';
+  const name=document.getElementById('c-name').value.trim();const company=document.getElementById('c-company').value.trim();
+  const phone=document.getElementById('c-phone').value.trim();const email=document.getElementById('c-email').value.trim();
+  const trade=document.getElementById('c-trade').value.trim();const areas=document.getElementById('c-areas').value.trim();const plan=document.getElementById('c-plan').value;
+  if(!name||!phone){showToast('Please enter your name and phone.',false);return;}
+  const btn=document.getElementById('contractor-btn');btn.disabled=true;btn.textContent='Sending…';
+  try{await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'contractor',name,company,phone,email,trade,address:areas,message:`Preferred pricing: ${plan}`})});}catch(e){}
+  document.getElementById('contractor-success').style.display='block';saveLead({type:'contractor',name,trade});
+  btn.disabled=false;btn.textContent='Apply to Partner Network';
 }
-
 async function sendContactMessage(){
-  const name = document.getElementById('contact-name').value.trim();
-  const phone = document.getElementById('contact-phone').value.trim();
-  const email = document.getElementById('contact-email').value.trim();
-  const msg = document.getElementById('contact-message').value.trim();
-  if(!name || !msg){ showToast('Please enter your name and message.', false); return; }
-
-  const btn = document.getElementById('contact-btn');
-  btn.disabled = true; btn.textContent = 'Sending…';
+  const name=document.getElementById('contact-name').value.trim();const phone=document.getElementById('contact-phone').value.trim();
+  const email=document.getElementById('contact-email').value.trim();const msg=document.getElementById('contact-message').value.trim();
+  if(!name||!msg){showToast('Please enter your name and message.',false);return;}
+  const btn=document.getElementById('contact-btn');btn.disabled=true;btn.textContent='Sending…';
   try{
-    const photos = photoStore['contact-photos'] || [];
-    const r = await fetch('/api/contact', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({type:'contact', name, phone, email, message: msg, photos})
-    });
-    const d = await r.json();
+    const photos=photoStore['contact-photos']||[];
+    const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'contact',name,phone,email,message:msg,photos})});
+    const d=await r.json();
     if(d.success){
       showToast('✅ Message sent! We\'ll be in touch soon.');
-      document.getElementById('contact-name').value='';
-      document.getElementById('contact-phone').value='';
-      document.getElementById('contact-email').value='';
-      document.getElementById('contact-message').value='';
-      document.getElementById('contact-previews').innerHTML='';
-      photoStore['contact-photos']=[];
-    } else {
-      throw new Error(d.error || 'Unknown error');
-    }
-    saveLead({type:'contact', name});
-  }catch(err){
-    showToast('Message received. You can also reach us at 403-470-9749.', true);
-    saveLead({type:'contact (offline)', name});
-  }
-  btn.disabled = false; btn.textContent = 'Send Message →';
+      ['contact-name','contact-phone','contact-email','contact-message'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('contact-previews').innerHTML='';photoStore['contact-photos']=[];
+    }else{throw new Error(d.error||'Unknown error');}
+    saveLead({type:'contact',name});
+  }catch(err){showToast('Message received. You can also reach us at 403-470-9749.',true);saveLead({type:'contact (offline)',name});}
+  btn.disabled=false;btn.textContent='Send Message →';
 }
 </script>
 </body>
 </html>
+ 
