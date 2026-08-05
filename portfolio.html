@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work & Homeowner Tips — Built Not Broken Solutions</title>
+<meta name="description" content="Before & after photos from ET's Quality Stucco Stone Repair. Calgary stucco, masonry & exterior repair — CRA registered business. Plus expert homeowner tips to protect your property.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1E1B18;
+    --charcoal-light:#2A2521;
+    --sand:#D8CFBE;
+    --sand-light:#EFEAE0;
+    --oxide:#B0451F;
+    --oxide-dark:#8C3517;
+    --slate:#3D4A5C;
+    --slate-light:#5A6B82;
+    --ink:#141210;
+    --white:#FFFFFF;
+    --green:#27AE60;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--sand-light);line-height:1.5;}
+  h1,h2,h3,h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:0.02em;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;}
+  img{max-width:100%;display:block;}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;background:var(--charcoal);color:var(--sand-light);border-bottom:3px solid var(--oxide);}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto;flex-wrap:wrap;gap:10px;}
+  .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0.03em;}
+  .logo span{color:var(--oxide);}
+  nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap;}
+  nav a{font-size:0.92rem;font-weight:500;opacity:0.9;}
+  nav a:hover{opacity:1;color:var(--oxide);}
+  .phone-pill{background:var(--oxide);color:var(--white);padding:9px 18px;border-radius:2px;font-weight:600;font-family:'Oswald',sans-serif;letter-spacing:0.03em;white-space:nowrap;}
+  .phone-pill:hover{background:var(--oxide-dark);}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,var(--charcoal) 0%,var(--charcoal-light) 60%,var(--slate) 140%);color:var(--sand-light);padding:64px 24px 56px;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border:2px solid rgba(176,69,31,0.2);border-radius:50%;}
+  .hero-inner{max-width:1180px;margin:0 auto;position:relative;}
+  .eyebrow{color:var(--oxide);font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:0.15em;font-size:0.85rem;margin-bottom:12px;}
+  .hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.05;margin-bottom:14px;}
+  .hero p{font-size:1.05rem;max-width:580px;color:var(--sand);margin-bottom:0;}
+
+  /* TRUST BADGES */
+  .trust-section{background:var(--white);padding:48px 24px;border-bottom:1px solid #E3DCCB;}
+  .trust-inner{max-width:1100px;margin:0 auto;}
+  .trust-section h2{font-size:1.1rem;color:var(--charcoal);margin-bottom:28px;text-align:center;}
+  .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+  .trust-card{background:var(--sand-light);border:1px solid #E3DCCB;border-top:4px solid var(--oxide);padding:20px 18px;text-align:center;}
+  .trust-card .icon{font-size:1.8rem;margin-bottom:8px;}
+  .trust-card h3{font-size:0.88rem;color:var(--charcoal);margin-bottom:6px;}
+  .trust-card p{font-size:0.82rem;color:#6B6355;}
+  .trust-card .badge{display:inline-block;background:var(--green);color:#fff;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:2px;margin-top:8px;letter-spacing:0.05em;}
+
+  /* SECTIONS */
+  section{padding:64px 24px;}
+  .section-head{max-width:640px;margin:0 auto 40px;text-align:center;}
+  .section-head .eyebrow{color:var(--oxide-dark);}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--charcoal);margin-bottom:10px;}
+  .section-head p{color:#5A5347;font-size:1rem;}
+
+  /* BEFORE/AFTER GALLERY */
+  .gallery-section{background:var(--sand-light);}
+  .ba-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;max-width:1100px;margin:0 auto;}
+  .ba-card{background:var(--white);border:1px solid #E3DCCB;overflow:hidden;}
+  .ba-photos{display:grid;grid-template-columns:1fr 1fr;}
+  .ba-photo{position:relative;aspect-ratio:4/3;overflow:hidden;background:#ccc;}
+  .ba-photo img{width:100%;height:100%;object-fit:cover;}
+  .ba-label{position:absolute;bottom:0;left:0;right:0;padding:6px 10px;font-family:'Oswald',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-align:center;}
+  .ba-label.before{background:rgba(60,50,40,0.85);color:var(--sand);}
+  .ba-label.after{background:rgba(39,174,96,0.9);color:#fff;}
+  .ba-info{padding:14px 16px;}
+  .ba-info h3{font-size:0.95rem;color:var(--charcoal);margin-bottom:4px;}
+  .ba-info p{font-size:0.82rem;color:#6B6355;}
+  .ba-info .ba-meta{font-size:0.75rem;color:#A79E8C;margin-top:6px;}
+  .gallery-empty{text-align:center;color:#8A8272;padding:40px;grid-column:1/-1;font-size:0.95rem;}
+
+  /* UPLOAD PANEL */
+  .upload-toggle-wrap{text-align:center;margin-bottom:28px;}
+  .upload-toggle{background:var(--slate);color:var(--white);padding:10px 22px;border-radius:2px;font-family:'Oswald',sans-serif;font-size:0.85rem;letter-spacing:0.03em;}
+  .upload-panel{max-width:600px;margin:0 auto 40px;background:var(--white);border:1px solid #E3DCCB;padding:28px;display:none;}
+  .upload-panel.show{display:block;}
+  .field-label{display:block;font-family:'Oswald',sans-serif;font-size:0.82rem;letter-spacing:0.05em;color:var(--charcoal);margin-bottom:6px;margin-top:14px;}
+  .field-label:first-child{margin-top:0;}
+  input[type=text],input[type=password],textarea,select{width:100%;padding:10px 12px;background:var(--sand-light);border:1px solid #D6CDBA;color:var(--ink);font-family:'Inter',sans-serif;font-size:0.92rem;border-radius:2px;}
+  textarea{min-height:80px;resize:vertical;}
+  .photo-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px;}
+  .photo-box{border:2px dashed #D6CDBA;padding:16px;text-align:center;border-radius:2px;}
+  .photo-box input[type=file]{display:none;}
+  .photo-box label{display:inline-block;background:var(--slate);color:#fff;padding:8px 14px;font-family:'Oswald',sans-serif;font-size:0.78rem;border-radius:2px;cursor:pointer;}
+  .photo-box label:hover{background:var(--slate-light);}
+  .photo-box .box-title{font-family:'Oswald',sans-serif;font-size:0.78rem;color:var(--oxide);letter-spacing:0.05em;margin-bottom:8px;}
+  .photo-box img.preview{width:100%;height:90px;object-fit:cover;margin-top:10px;border-radius:2px;display:none;}
+  .btn-primary{background:var(--oxide);color:#fff;padding:12px 24px;border-radius:2px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:0.03em;font-size:0.92rem;width:100%;margin-top:16px;}
+  .btn-primary:hover{background:var(--oxide-dark);}
+  .upload-status{margin-top:12px;font-size:0.88rem;text-align:center;color:var(--slate);display:none;}
+
+  /* TIPS */
+  .tips-section{background:var(--charcoal);color:var(--sand-light);}
+  .tips-section .section-head h2{color:var(--white);}
+  .tips-section .section-head p{color:var(--sand);}
+  .tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1100px;margin:0 auto;}
+  .tip-card{background:var(--charcoal-light);border:1px solid rgba(216,207,190,0.12);border-left:4px solid var(--oxide);padding:22px 20px;}
+  .tip-card h3{font-size:1rem;color:var(--white);margin-bottom:10px;}
+  .tip-card p{font-size:0.88rem;color:var(--sand);line-height:1.6;}
+  .tip-card .tip-num{font-family:'Oswald',sans-serif;font-size:0.75rem;color:var(--oxide);letter-spacing:0.1em;margin-bottom:6px;}
+
+  /* CTA */
+  .cta-section{background:var(--oxide);color:#fff;text-align:center;padding:56px 24px;}
+  .cta-section h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:12px;}
+  .cta-section p{font-size:1.05rem;margin-bottom:28px;opacity:0.9;}
+  .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-white{background:#fff;color:var(--oxide);padding:14px 28px;border-radius:2px;font-family:'Oswald',sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.03em;}
+  .btn-white:hover{background:var(--sand-light);}
+  .btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.6);padding:14px 28px;border-radius:2px;font-family:'Oswald',sans-serif;font-weight:600;font-size:0.95rem;}
+  .btn-outline-white:hover{border-color:#fff;}
+
+  footer{background:var(--ink);color:#8A8272;text-align:center;padding:28px 24px;font-size:0.85rem;}
+  footer strong{color:var(--sand);}
+
+  #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);background:var(--charcoal);color:#fff;padding:12px 22px;border-radius:2px;font-size:0.9rem;border-left:4px solid var(--oxide);box-shadow:0 8px 24px rgba(0,0,0,0.3);transition:transform .25s ease;z-index:999;max-width:90vw;}
+  #toast.show{transform:translateX(-50%) translateY(0);}
+  #toast.error{border-left-color:#C0392B;}
+
+  @media(max-width:640px){
+    .header-inner{justify-content:center;}
+    nav{justify-content:center;}
+    .photo-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">BUILT<span>NOT</span>BROKEN</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#quote">AI Quote</a>
+      <a href="work.html">Gallery</a>
+      <a href="portfolio.html" style="color:var(--oxide);">Our Work & Tips</a>
+      <a href="invoice.html">Invoice Builder</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <a href="tel:4034709749" class="phone-pill">403-470-9749</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">ET's Quality Stucco Stone Repair · Calgary, AB</div>
+    <h1>Real Jobs.<br>Real Results.</h1>
+    <p>Before & after photos from actual Calgary jobs, plus honest homeowner tips from a contractor who's been doing this for years. No fluff, no upsell — just what you need to know to protect your home.</p>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<div class="trust-section">
+  <div class="trust-inner">
+    <h2>Why Homeowners Trust ET's Quality Stucco Stone Repair</h2>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="icon">🏛️</div>
+        <h3>CRA Registered Business</h3>
+        <p>Fully registered with the Canada Revenue Agency. You get a proper receipt, every time.</p>
+        <span class="badge">✓ VERIFIED</span>
+      </div>
+      <div class="trust-card">
+        <div class="icon">🧾</div>
+        <h3>GST Registered</h3>
+        <p>GST collected and remitted properly. No cash-only, no under-the-table — clean books.</p>
+        <span class="badge">✓ GST REG'D</span>
+      </div>
+      <div class="trust-card">
+        <div class="icon">🛡️</div>
+        <h3>Fully Insured</h3>
+        <p>Liability insurance in place on every job. If something goes wrong, you're covered.</p>
+        <span class="badge">✓ INSURED</span>
+      </div>
+      <div class="trust-card">
+        <div class="icon">👷</div>
+        <h3>WCB Coverage</h3>
+        <p>All workers covered under WCB Alberta. You're not liable if someone is injured on your property.</p>
+        <span class="badge">✓ WCB AB</span>
+      </div>
+      <div class="trust-card">
+        <div class="icon">📋</div>
+        <h3>Itemized Invoices</h3>
+        <p>Every job gets a proper written invoice — labour, materials, and scope all broken out clearly.</p>
+        <span class="badge">✓ TRANSPARENT</span>
+      </div>
+      <div class="trust-card">
+        <div class="icon">🔒</div>
+        <h3>1-Year Warranty</h3>
+        <p>Workmanship warranty on all completed jobs. We stand behind everything we do.</p>
+        <span class="badge">✓ WARRANTED</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BEFORE & AFTER GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="section-head">
+    <div class="eyebrow">Before & After</div>
+    <h2>Past Jobs</h2>
+    <p>Real Calgary projects — stucco, masonry, parging, waterproofing, and more.</p>
+  </div>
+
+  <div class="upload-toggle-wrap">
+    <button class="upload-toggle" onclick="toggleUpload()">📸 Add a Job Photo (Evan Only)</button>
+  </div>
+
+  <div class="upload-panel" id="upload-panel">
+    <div id="pin-step">
+      <label class="field-label">Enter PIN to upload</label>
+      <input type="password" id="upload-pin" placeholder="••••" maxlength="6">
+      <button class="btn-primary" onclick="checkPin()">Continue →</button>
+    </div>
+    <div id="upload-step" style="display:none;">
+      <label class="field-label">Job Title</label>
+      <input type="text" id="up-title" placeholder="e.g. Stucco crack repair — Brentwood NW">
+      <label class="field-label">Description</label>
+      <textarea id="up-desc" placeholder="e.g. Full south elevation — sand & cement repair, acrylic recoat, colour match"></textarea>
+      <label class="field-label">Location (neighbourhood)</label>
+      <input type="text" id="up-location" placeholder="e.g. Calgary NW — Brentwood">
+      <label class="field-label">Photos</label>
+      <div class="photo-row">
+        <div class="photo-box">
+          <div class="box-title">BEFORE</div>
+          <input type="file" id="before-input" accept="image/*">
+          <label for="before-input">Choose Photo</label>
+          <img class="preview" id="before-preview">
+        </div>
+        <div class="photo-box">
+          <div class="box-title">AFTER</div>
+          <input type="file" id="after-input" accept="image/*">
+          <label for="after-input">Choose Photo</label>
+          <img class="preview" id="after-preview">
+        </div>
+      </div>
+      <button class="btn-primary" id="upload-btn" onclick="uploadJob()">Upload Job →</button>
+      <div class="upload-status" id="upload-status">Uploading...</div>
+    </div>
+  </div>
+
+  <div class="ba-grid" id="ba-grid">
+    <div class="gallery-empty" id="gallery-empty">Loading jobs...</div>
+  </div>
+</section>
+
+<!-- HOMEOWNER TIPS -->
+<section class="tips-section" id="tips">
+  <div class="section-head">
+    <div class="eyebrow">From the Contractor</div>
+    <h2>Homeowner Tips</h2>
+    <p>What I'd tell my own family — how to protect your home and avoid getting ripped off.</p>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-num">TIP 01</div>
+      <h3>Never Ignore a Crack in Your Stucco</h3>
+      <p>Calgary's freeze-thaw cycle turns a hairline crack into a $4,000 problem in two or three winters. Water gets in, freezes, expands, and blows the stucco off the wall. A $300 repair today prevents a full re-coat tomorrow. If you can fit a credit card in the crack, call someone now.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">TIP 02</div>
+      <h3>Always Ask for WCB and Liability Proof</h3>
+      <p>If a contractor is injured on your property and they don't have WCB, you can be held liable. If they damage your neighbour's fence and have no liability insurance, that's your problem too. Ask for a WCB clearance letter and insurance certificate before anyone sets foot on your property. Any legit contractor has these ready.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">TIP 03</div>
+      <h3>The Cheapest Quote Is Usually the Most Expensive Job</h3>
+      <p>I've re-done more "cheap jobs" than I can count. A guy who charges $800 to fix your parging when the market rate is $1,500 is cutting corners somewhere — wrong mix, no primer, no moisture barrier. You'll be calling someone else in 18 months. Get three quotes, throw out the lowest, and ask the others what's included.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">TIP 04</div>
+      <h3>Caulking Around Windows & Doors Is Annual Maintenance</h3>
+      <p>In Calgary's climate, exterior caulking around windows, doors, and penetrations typically fails every 3–5 years. When it fails, water tracks down inside your wall cavity, hits the framing, and starts rot you can't see. Walk around your house every spring and squeeze any caulk joint — if it's hard or cracked, it needs replacing. This is a $100 DIY job that prevents a $10,000 wall repair.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">TIP 05</div>
+      <h3>Efflorescence Is a Warning Sign, Not Just Cosmetic</h3>
+      <p>That white chalky staining on your brick or concrete? That's efflorescence — mineral salts being pushed to the surface by water moving through your masonry. It means water is getting in somewhere. You can scrub it off, but if it keeps coming back, there's a water intrusion issue behind it that will eventually cause spalling and structural damage.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">TIP 06</div>
+      <h3>Grade Your Yard Away From the Foundation</h3>
+      <p>The ground around your house should slope away from the foundation — about 6 inches of drop over the first 10 feet. If it slopes toward the house, every rain event is slowly pushing water against your foundation wall. This is the single most common cause of basement water issues in Calgary and most homeowners don't know it. A simple regrading job can save you a $30,000 waterproofing nightmare.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">TIP 07</div>
+      <h3>Get Everything in Writing Before Work Starts</h3>
+      <p>A verbal quote is worth nothing. Before any contractor starts: get the scope of work in writing, get the price confirmed in writing, confirm the payment schedule. "50% deposit, 50% on completion" is standard and protects both sides. Never pay 100% upfront — and if someone refuses to put anything in writing, walk away.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">TIP 08</div>
+      <h3>Pressure Washing Stucco Can Cause More Damage</h3>
+      <p>High-pressure washing can blow out mortar joints, force water behind your stucco, and damage the finish coat — especially on older sand & cement systems. If you're cleaning stucco, use a low-pressure rinse, soft brush, and appropriate cleaning solution. Leave the pressure washer for your driveway and deck, not your exterior walls.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">TIP 09</div>
+      <h3>Hail Damage to EIFS Is Not Always Visible</h3>
+      <p>EIFS (foam-board stucco) can absorb hail impacts without showing obvious cracking — but the foam board underneath gets compressed, the mesh gets broken, and the water barrier gets compromised. After any major hail event in Calgary, get an exterior inspection even if the wall "looks fine." Insurance adjusters miss this all the time. Hail damage claims on EIFS systems are common and often covered.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to Get It Fixed Right?</h2>
+  <p>Get an instant AI quote or call us directly. We serve Calgary and all surrounding areas.</p>
+  <div class="cta-btns">
+    <a href="/#quote" class="btn-white">Get an AI Quote</a>
+    <a href="tel:4034709749" class="btn-outline-white">Call 403-470-9749</a>
+  </div>
+</section>
+
+<footer>
+  <strong>Built Not Broken Solutions</strong> · A platform by ET's Quality Stucco Stone Repair · Calgary, AB · 403-470-9749 · e-Transfer &amp; cheque accepted
+</footer>
+
+<div id="toast"></div>
+
+<script>
+const PIN = '0509';
+const DATA_URL = 'https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/data/portfolio.json';
+
+function showToast(msg, ok=true){
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.className = ok ? 'show' : 'show error';
+  setTimeout(()=>{ el.className = el.className.replace('show',''); }, 4000);
+}
+
+function toggleUpload(){
+  document.getElementById('upload-panel').classList.toggle('show');
+}
+
+function checkPin(){
+  if(document.getElementById('upload-pin').value === PIN){
+    document.getElementById('pin-step').style.display = 'none';
+    document.getElementById('upload-step').style.display = 'block';
+  } else {
+    showToast('Incorrect PIN', false);
+  }
+}
+
+function compressImage(file, maxDim=1280, quality=0.75){
+  return new Promise((resolve, reject)=>{
+    const img = new Image(); const reader = new FileReader();
+    reader.onload = e => { img.src = e.target.result; }; reader.onerror = reject;
+    img.onload = ()=>{
+      let {width, height} = img;
+      if(width > height && width > maxDim){ height = Math.round(height*(maxDim/width)); width = maxDim; }
+      else if(height > maxDim){ width = Math.round(width*(maxDim/height)); height = maxDim; }
+      const c = document.createElement('canvas'); c.width = width; c.height = height;
+      c.getContext('2d').drawImage(img, 0, 0, width, height);
+      resolve(c.toDataURL('image/jpeg', quality));
+    }; img.onerror = reject; reader.readAsDataURL(file);
+  });
+}
+
+['before','after'].forEach(type=>{
+  document.getElementById(`${type}-input`).addEventListener('change', async function(){
+    if(!this.files[0]) return;
+    const data = await compressImage(this.files[0]);
+    const prev = document.getElementById(`${type}-preview`);
+    prev.src = data; prev.style.display = 'block';
+  });
+});
+
+async function uploadJob(){
+  const title = document.getElementById('up-title').value.trim();
+  const desc = document.getElementById('up-desc').value.trim();
+  const location = document.getElementById('up-location').value.trim();
+  const beforeFile = document.getElementById('before-input').files[0];
+  const afterFile = document.getElementById('after-input').files[0];
+
+  if(!title || !beforeFile || !afterFile){
+    showToast('Need a title and both photos.', false); return;
+  }
+
+  const btn = document.getElementById('upload-btn');
+  const status = document.getElementById('upload-status');
+  btn.disabled = true; status.style.display = 'block'; status.textContent = 'Compressing photos...';
+
+  try {
+    const beforeData = await compressImage(beforeFile);
+    const afterData = await compressImage(afterFile);
+    status.textContent = 'Uploading...';
+
+    const res = await fetch('/api/portfolio-add', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        title, desc, location,
+        before: { data: beforeData, name: beforeFile.name, type: 'image/jpeg' },
+        after: { data: afterData, name: afterFile.name, type: 'image/jpeg' }
+      })
+    });
+    const d = await res.json();
+    if(!d.success) throw new Error(d.error || 'Upload failed');
+
+    showToast('✅ Job uploaded successfully!');
+    status.style.display = 'none';
+    document.getElementById('upload-panel').classList.remove('show');
+    setTimeout(loadGallery, 2000);
+  } catch(err){
+    showToast('Upload failed — ' + err.message, false);
+    status.style.display = 'none';
+  }
+  btn.disabled = false;
+}
+
+async function loadGallery(){
+  const grid = document.getElementById('ba-grid');
+  const empty = document.getElementById('gallery-empty');
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    const items = await res.json();
+    if(!items.length){
+      empty.textContent = 'Photos coming soon — check back after our next job.';
+      return;
+    }
+    empty.style.display = 'none';
+    grid.innerHTML = items.map(item => `
+      <div class="ba-card">
+        <div class="ba-photos">
+          <div class="ba-photo">
+            <img src="${item.beforeUrl}" alt="Before — ${item.title}" loading="lazy">
+            <div class="ba-label before">BEFORE</div>
+          </div>
+          <div class="ba-photo">
+            <img src="${item.afterUrl}" alt="After — ${item.title}" loading="lazy">
+            <div class="ba-label after">AFTER</div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h3>${item.title}</h3>
+          ${item.desc ? `<p>${item.desc}</p>` : ''}
+          <div class="ba-meta">${item.location ? item.location + ' · ' : ''}${item.date || ''}</div>
+        </div>
+      </div>
+    `).join('');
+  } catch(e){
+    empty.textContent = 'Photos coming soon.';
+  }
+}
+
+loadGallery();
+</script>
+</body>
+</html>
