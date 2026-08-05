@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice Builder — Built Not Broken Solutions</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0d0d;
+    --surface: #1a1a1a;
+    --surface2: #222;
+    --border: #2e2e2e;
+    --orange: #e86c1a;
+    --orange-dim: #c45c12;
+    --text: #f0f0f0;
+    --muted: #888;
+    --warn: #e8b41a;
+    --danger: #e83a1a;
+    --green: #2ecc71;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+  /* ── NAV ── */
+  nav { background: #111; border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-brand { font-size: 1rem; font-weight: 800; letter-spacing: 0.04em; color: var(--text); text-decoration: none; }
+  .nav-brand span { color: var(--orange); }
+  .nav-back { color: var(--muted); font-size: 0.85rem; text-decoration: none; }
+  .nav-back:hover { color: var(--orange); }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
+  h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:600px){ .grid2 { grid-template-columns: 1fr; } }
+
+  /* ── CARDS ── */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  .card h2 { font-size: 0.95rem; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+
+  /* ── FORM ELEMENTS ── */
+  label { display: block; font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; margin-top: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  label:first-child { margin-top: 0; }
+  input, select, textarea {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-size: 0.92rem; padding: 9px 12px; outline: none; transition: border .15s;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--orange); }
+  textarea { resize: vertical; min-height: 72px; }
+  select option { background: #222; }
+
+  /* ── LINE ITEMS ── */
+  .line-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 90px 36px;
+    gap: 8px; align-items: end;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .line-item:last-child { border-bottom: none; }
+  .line-item label { margin-top: 0; }
+  @media(max-width:640px){
+    .line-item { grid-template-columns: 1fr 1fr; }
+    .line-item .col-desc { grid-column: 1 / -1; }
+    .line-item .col-del { grid-column: 1 / -1; }
+  }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 6px; border: none; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: background .15s; }
+  .btn-primary { background: var(--orange); color: #fff; }
+  .btn-primary:hover { background: var(--orange-dim); }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+  .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+  .btn-danger:hover { background: var(--danger); color: #fff; }
+  .btn-sm { padding: 5px 10px; font-size: 0.78rem; }
+  .btn-icon { padding: 6px 10px; }
+
+  .add-row { margin-top: 12px; }
+
+  /* ── WARN BADGE ── */
+  .warn-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(232,180,26,.12); color: var(--warn); border: 1px solid rgba(232,180,26,.3); border-radius: 4px; font-size: 0.75rem; padding: 3px 8px; margin-top: 4px; }
+  .warn-badge.hidden { display: none; }
+
+  /* ── TOTALS ── */
+  .totals { margin-top: 4px; }
+  .totals-row { display: flex; justify-content: space-between; padding: 7px 0; font-size: 0.92rem; border-bottom: 1px solid var(--border); }
+  .totals-row:last-child { border-bottom: none; }
+  .totals-row.grand { font-size: 1.15rem; font-weight: 800; color: var(--orange); padding-top: 12px; }
+  .totals-row.grand.lowball { color: var(--danger); }
+
+  /* ── LOWBALL ALERT ── */
+  #lowball-alert { background: rgba(232,58,26,.1); border: 1px solid rgba(232,58,26,.4); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; display: none; }
+  #lowball-alert.show { display: block; }
+  #lowball-alert strong { color: var(--danger); }
+  #lowball-alert p { font-size: 0.88rem; color: #ccc; margin-top: 4px; }
+
+  /* ── QUICK RATES TABLE ── */
+  .rates-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  .rates-table th { text-align: left; color: var(--muted); font-weight: 600; padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  .rates-table td { padding: 5px 8px; border-bottom: 1px solid #1e1e1e; }
+  .rates-table tr:last-child td { border-bottom: none; }
+  .rate-min { color: var(--muted); }
+  .rate-rec { color: var(--green); font-weight: 600; }
+
+  /* ── ACTIONS ── */
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+
+  /* ── PRINT ── */
+  @media print {
+    nav, .actions, .add-row, .btn-icon, #lowball-alert, .rates-card, .no-print { display: none !important; }
+    body { background: #fff; color: #000; }
+    .card { border: 1px solid #ccc; background: #fff; page-break-inside: avoid; }
+    h1, .card h2 { color: #000; }
+    input, select, textarea { border: none; padding: 0; background: transparent; color: #000; }
+    .totals-row.grand { color: #000; }
+    .page { padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="/"><span>BUILT</span> NOT BROKEN</a>
+  <a class="nav-back" href="/">← Back to Site</a>
+</nav>
+
+<div class="page">
+  <h1>Invoice Builder</h1>
+  <p class="subtitle">Built Not Broken Solutions Inc. · Calgary, AB · Internal Use Only</p>
+
+  <!-- LOWBALL ALERT -->
+  <div id="lowball-alert">
+    <strong>⚠ Lowball Warning</strong>
+    <p id="lowball-msg">One or more line items are priced below the 2026 Alberta market minimum. Review highlighted rows before sending.</p>
+  </div>
+
+  <!-- CLIENT + JOB INFO -->
+  <div class="card">
+    <h2>Invoice Details</h2>
+    <div class="grid2">
+      <div>
+        <label>Invoice #</label>
+        <input type="text" id="inv-num" placeholder="INV-2026-001">
+      </div>
+      <div>
+        <label>Date</label>
+        <input type="date" id="inv-date">
+      </div>
+      <div>
+        <label>Client Name</label>
+        <input type="text" id="client-name" placeholder="John Smith">
+      </div>
+      <div>
+        <label>Client Phone</label>
+        <input type="tel" id="client-phone" placeholder="403-xxx-xxxx">
+      </div>
+      <div>
+        <label>Client Email</label>
+        <input type="email" id="client-email" placeholder="client@email.com">
+      </div>
+      <div>
+        <label>Job Address</label>
+        <input type="text" id="job-addr" placeholder="123 Main St, Calgary NW">
+      </div>
+    </div>
+    <label>Project Description</label>
+    <textarea id="proj-desc" placeholder="e.g. Stucco crack repair and acrylic recoat, south & west elevations..."></textarea>
+  </div>
+
+  <!-- LINE ITEMS -->
+  <div class="card">
+    <h2>Line Items</h2>
+    <div id="line-items"></div>
+    <div class="add-row">
+      <button class="btn btn-ghost btn-sm" onclick="addLine()">+ Add Line Item</button>
+    </div>
+  </div>
+
+  <!-- TOTALS -->
+  <div class="card">
+    <h2>Summary</h2>
+    <div class="totals" id="totals">
+      <div class="totals-row"><span>Subtotal</span><span id="t-sub">$0.00</span></div>
+      <div class="totals-row">
+        <span>GST (5%)</span>
+        <span style="display:flex;align-items:center;gap:8px;">
+          <label style="margin:0;text-transform:none;font-size:0.82rem;color:var(--muted);">
+            <input type="checkbox" id="gst-toggle" onchange="recalc()" style="width:auto;margin-right:4px;">Apply GST
+          </label>
+          <span id="t-gst">$0.00</span>
+        </span>
+      </div>
+      <div class="totals-row"><span>Materials (if separate)</span><span id="t-mat">$0.00</span></div>
+      <div class="totals-row grand" id="grand-row"><span>TOTAL DUE</span><span id="t-total">$0.00</span></div>
+    </div>
+    <div style="margin-top:16px;">
+      <label>Payment Terms</label>
+      <select id="pay-terms">
+        <option>50% deposit, 50% on completion</option>
+        <option>100% on completion</option>
+        <option>Due on receipt</option>
+        <option>Net 14 days</option>
+        <option>Net 30 days</option>
+      </select>
+      <label>Payment Method</label>
+      <select id="pay-method">
+        <option>e-Transfer</option>
+        <option>Cheque</option>
+        <option>e-Transfer or Cheque</option>
+      </select>
+      <label>Notes / Change Orders</label>
+      <textarea id="notes" placeholder="e.g. Corner bead replacement included at no additional charge as goodwill gesture. All pricing subject to site conditions."></textarea>
+    </div>
+  </div>
+
+  <!-- QUICK RATE REFERENCE -->
+  <div class="card rates-card no-print">
+    <h2>2026 AB Rate Reference</h2>
+    <table class="rates-table">
+      <thead>
+        <tr><th>Trade</th><th>Min/hr</th><th>Recommended</th><th>Max/hr</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Stucco / EIFS</td><td class="rate-min">$48</td><td class="rate-rec">$58–$62</td><td>$72</td></tr>
+        <tr><td>Masonry / Brick</td><td class="rate-min">$90</td><td class="rate-rec">$100–$110</td><td>$115</td></tr>
+        <tr><td>Parging / Foundation</td><td class="rate-min">$55</td><td class="rate-rec">$65–$72</td><td>$80</td></tr>
+        <tr><td>Waterproofing</td><td class="rate-min">$50</td><td class="rate-rec">$62–$68</td><td>$80</td></tr>
+        <tr><td>Window / Door Install</td><td class="rate-min">$48</td><td class="rate-rec">$58–$65</td><td>$75</td></tr>
+        <tr><td>Pressure Washing</td><td class="rate-min">$35</td><td class="rate-rec">$42–$48</td><td>$58</td></tr>
+        <tr><td>Deck / Patio Washing</td><td class="rate-min">$35</td><td class="rate-rec">$40–$46</td><td>$55</td></tr>
+        <tr><td>Condo Balcony Washing</td><td class="rate-min">$38</td><td class="rate-rec">$44–$50</td><td>$60</td></tr>
+        <tr><td>Electrical</td><td class="rate-min">$58</td><td class="rate-rec">$68–$74</td><td>$82</td></tr>
+        <tr><td>Plumbing</td><td class="rate-min">$60</td><td class="rate-rec">$70–$76</td><td>$85</td></tr>
+        <tr><td>HVAC</td><td class="rate-min">$52</td><td class="rate-rec">$62–$68</td><td>$75</td></tr>
+        <tr><td>Framing</td><td class="rate-min">$42</td><td class="rate-rec">$50–$55</td><td>$58</td></tr>
+        <tr><td>Drywall</td><td class="rate-min">$38</td><td class="rate-rec">$44–$48</td><td>$52</td></tr>
+        <tr><td>Roofing</td><td class="rate-min">$40</td><td class="rate-rec">$50–$56</td><td>$60</td></tr>
+        <tr><td>Concrete</td><td class="rate-min">$45</td><td class="rate-rec">$54–$60</td><td>$65</td></tr>
+        <tr><td>Painting</td><td class="rate-min">$35</td><td class="rate-rec">$42–$47</td><td>$50</td></tr>
+        <tr><td>Flooring</td><td class="rate-min">$32</td><td class="rate-rec">$40–$45</td><td>$48</td></tr>
+        <tr><td>Landscaping</td><td class="rate-min">$38</td><td class="rate-rec">$46–$50</td><td>$55</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions no-print">
+    <button class="btn btn-primary" onclick="window.print()">🖨 Print / Save PDF</button>
+    <button class="btn btn-ghost" onclick="clearAll()">🗑 Clear All</button>
+  </div>
+</div>
+
+<script>
+// ── Rate minimums for lowball detection ──
+const RATE_MINS = {
+  'stucco': 48, 'masonry': 90, 'brick': 90, 'stone': 90, 'parging': 55, 'foundation': 55,
+  'waterproofing': 50, 'window': 48, 'door': 48,
+  'pressure': 35, 'deck': 35, 'patio': 35, 'balcony': 38, 'condo': 38,
+  'electrical': 58, 'plumbing': 60, 'hvac': 52, 'framing': 42,
+  'drywall': 38, 'roofing': 40, 'concrete': 45, 'painting': 35,
+  'flooring': 32, 'landscaping': 38
+};
+
+// Materials-only items (no lowball check on hourly)
+const MATERIAL_LINES = ['materials', 'material', 'supplies', 'supply', 'equipment', 'rental'];
+
+let lineCount = 0;
+
+function addLine(desc='', qty=1, unit='hr', rate='', mat=0) {
+  lineCount++;
+  const id = lineCount;
+  const container = document.getElementById('line-items');
+  const div = document.createElement('div');
+  div.className = 'line-item';
+  div.id = `line-${id}`;
+  div.innerHTML = `
+    <div class="col-desc">
+      <label>Description</label>
+      <input type="text" id="desc-${id}" placeholder="e.g. Stucco crack repair — south elevation" value="${desc}" oninput="recalc()">
+      <span class="warn-badge hidden" id="warn-${id}">⚠ Below market rate</span>
+    </div>
+    <div>
+      <label>Qty</label>
+      <input type="number" id="qty-${id}" value="${qty}" min="0" step="0.25" oninput="recalc()">
+    </div>
+    <div>
+      <label>Unit</label>
+      <select id="unit-${id}" onchange="recalc()">
+        <option value="hr" ${unit==='hr'?'selected':''}>hr</option>
+        <option value="sqft" ${unit==='sqft'?'selected':''}>sqft</option>
+        <option value="lnft" ${unit==='lnft'?'selected':''}>lnft</option>
+        <option value="ea" ${unit==='ea'?'selected':''}>ea</option>
+        <option value="day" ${unit==='day'?'selected':''}>day</option>
+        <option value="flat" ${unit==='flat'?'selected':''}>flat</option>
+      </select>
+    </div>
+    <div>
+      <label>Rate / Unit ($)</label>
+      <input type="number" id="rate-${id}" value="${rate}" min="0" step="0.01" placeholder="0.00" oninput="recalc()">
+    </div>
+    <div class="col-del" style="display:flex;align-items:flex-end;">
+      <button class="btn btn-icon btn-danger" onclick="removeLine(${id})" title="Remove">✕</button>
+    </div>
+  `;
+  container.appendChild(div);
+  recalc();
+}
+
+function removeLine(id) {
+  const el = document.getElementById(`line-${id}`);
+  if (el) el.remove();
+  recalc();
+}
+
+function detectTrade(desc) {
+  const d = desc.toLowerCase();
+  for (const [key, min] of Object.entries(RATE_MINS)) {
+    if (d.includes(key)) return min;
+  }
+  return null;
+}
+
+function isMaterialLine(desc) {
+  const d = desc.toLowerCase();
+  return MATERIAL_LINES.some(k => d.includes(k));
+}
+
+function recalc() {
+  let subtotal = 0;
+  let matTotal = 0;
+  let anyLowball = false;
+  let lowballItems = [];
+
+  // Find all line items
+  document.querySelectorAll('.line-item').forEach(row => {
+    const id = row.id.replace('line-', '');
+    const desc = document.getElementById(`desc-${id}`)?.value || '';
+    const qty = parseFloat(document.getElementById(`qty-${id}`)?.value) || 0;
+    const rate = parseFloat(document.getElementById(`rate-${id}`)?.value) || 0;
+    const unit = document.getElementById(`unit-${id}`)?.value || 'hr';
+    const lineTotal = qty * rate;
+    const warnEl = document.getElementById(`warn-${id}`);
+
+    // Lowball check (hourly labour lines only)
+    let isLow = false;
+    if (unit === 'hr' && rate > 0 && !isMaterialLine(desc)) {
+      const minRate = detectTrade(desc);
+      if (minRate && rate < minRate) {
+        isLow = true;
+        anyLowball = true;
+        lowballItems.push(`${desc || 'Line item'} ($${rate}/hr — min $${minRate}/hr)`);
+      }
+    }
+    if (warnEl) warnEl.classList.toggle('hidden', !isLow);
+
+    // Separate materials vs labour
+    if (isMaterialLine(desc)) {
+      matTotal += lineTotal;
+    } else {
+      subtotal += lineTotal;
+    }
+  });
+
+  const gstOn = document.getElementById('gst-toggle').checked;
+  const gst = gstOn ? subtotal * 0.05 : 0;
+  const total = subtotal + gst + matTotal;
+
+  document.getElementById('t-sub').textContent = fmt(subtotal);
+  document.getElementById('t-gst').textContent = fmt(gst);
+  document.getElementById('t-mat').textContent = fmt(matTotal);
+  document.getElementById('t-total').textContent = fmt(total);
+
+  // Lowball alert
+  const alert = document.getElementById('lowball-alert');
+  const grandRow = document.getElementById('grand-row');
+  if (anyLowball) {
+    alert.classList.add('show');
+    document.getElementById('lowball-msg').textContent =
+      'Below market rate: ' + lowballItems.join('; ') + '. Review before sending.';
+    grandRow.classList.add('lowball');
+  } else {
+    alert.classList.remove('show');
+    grandRow.classList.remove('lowball');
+  }
+}
+
+function fmt(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function clearAll() {
+  if (!confirm('Clear all line items and client info?')) return;
+  document.getElementById('line-items').innerHTML = '';
+  lineCount = 0;
+  ['inv-num','client-name','client-phone','client-email','job-addr','proj-desc','notes'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('gst-toggle').checked = false;
+  recalc();
+}
+
+// Set today's date
+document.getElementById('inv-date').valueAsDate = new Date();
+
+// Start with 3 blank lines
+addLine();
+addLine();
+addLine();
+</script>
+</body>
+</html>
