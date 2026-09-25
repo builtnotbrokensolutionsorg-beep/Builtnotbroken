@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /invoice.html
+Disallow: /api/
+
+Sitemap: https://www.builtnotbrokensolutions.org/sitemap.xml
