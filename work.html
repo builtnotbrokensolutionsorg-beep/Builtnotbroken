@@ -37,6 +37,16 @@
 
   section{padding:50px 24px;}
   .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;max-width:1180px;margin:0 auto;}
+  .featured{max-width:1180px;margin:0 auto;}
+  .featured h2{font-size:1.4rem;color:var(--charcoal);margin-bottom:16px;}
+  .project-card{display:grid;grid-template-columns:1.1fr 1fr;background:var(--white);border:1px solid #E3DCCB;overflow:hidden;}
+  .project-card img{width:100%;height:100%;max-height:380px;object-fit:cover;display:block;}
+  .project-card .pc-body{padding:24px 26px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
+  .project-card .pc-body h3{font-size:1.35rem;color:var(--charcoal);line-height:1.15;}
+  .project-card .pc-body p{font-size:0.95rem;color:var(--charcoal-light);}
+  .project-card .pc-link{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--oxide);}
+  .project-card:hover .pc-link{color:var(--oxide-dark);}
+  @media(max-width:700px){.project-card{grid-template-columns:1fr;}}
   .gallery-card{background:var(--white);border:1px solid #E3DCCB;overflow:hidden;position:relative;}
   .gallery-card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#ddd;}
   .gallery-card .card-body{padding:14px 16px;}
@@ -86,6 +96,21 @@
   <div class="eyebrow">Recent Jobs</div>
   <h1>Completed Work</h1>
   <p>A running look at repairs and installs finished across Calgary — stucco, masonry, windows, and everything in between.</p>
+</section>
+
+<section style="padding-bottom:10px;">
+  <div class="featured">
+    <h2>Featured Project</h2>
+    <a class="project-card" href="project-oak-hardwood.html">
+      <img src="images/oak-hardwood-thumb.jpg" alt="Bedroom with new dark-stained 5-inch oak hardwood floor" loading="lazy">
+      <div class="pc-body">
+        <span class="trade-tag" style="font-family:'Oswald',sans-serif;font-size:0.75rem;letter-spacing:0.05em;color:var(--oxide);text-transform:uppercase;">Interior Renovation · Flooring</span>
+        <h3>Carpet Removal &amp; 5" Oak Hardwood Install</h3>
+        <p>Old carpet torn out, subfloor prepped, and 5" solid oak installed through the hallway and bedroom, stained dark and sealed to a glossy shine. Phase 1 of a multi-room renovation.</p>
+        <span class="pc-link">See the full project →</span>
+      </div>
+    </a>
+  </div>
 </section>
 
 <section>
