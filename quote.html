@@ -69,17 +69,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-
 .result-trade{font-size:14px;font-weight:700;color:var(--black);display:flex;align-items:center;gap:8px}
 .result-range{font-size:14px;font-weight:800;color:var(--orange)}
 .result-rate{font-size:12px;color:var(--muted)}
-.stucco-scope{display:none;margin:-8px 0 24px;padding:18px;border:1.5px solid var(--orange);border-radius:12px;background:rgba(244,96,12,.04)}
-.stucco-scope.show{display:block}
-.stucco-scope h3{font-size:15px;font-weight:800;color:var(--black);margin-bottom:2px}
-.stucco-scope p{font-size:12.5px;color:var(--muted);margin-bottom:12px}
-.scope-opt{display:flex;align-items:center;gap:12px;padding:11px 12px;background:#fff;border:1.5px solid var(--border);border-radius:var(--r);margin-top:8px;cursor:pointer;font-size:13px}
-.scope-opt:has(input:checked){border-color:var(--orange)}
-.scope-opt input{accent-color:var(--orange);flex:none}
-.scope-opt span{flex:1;display:flex;flex-direction:column}
-.scope-opt small{color:var(--muted);font-size:12px}
-.scope-opt em{font-style:normal;font-weight:800;color:var(--orange);white-space:nowrap}
-@media(max-width:520px){.result-row{grid-template-columns:1fr auto}.result-rate{grid-column:1/-1}}
 .result-total{background:var(--black);color:#fff;border-radius:12px;padding:20px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
 .result-total .label{font-size:13px;color:#9ca3af;font-weight:600}
 .result-total .amount{font-size:28px;font-weight:900;color:var(--orange);letter-spacing:-1px}
@@ -227,16 +216,6 @@ footer{background:var(--black);color:#fff;padding:40px 24px 28px}
         <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Flooring" data-low="32" data-high="48"><span>🟫</span>Flooring</div>
         <div class="trade-opt" onclick="toggleTrade(this)" data-trade="Landscaping" data-low="38" data-high="55"><span>🌿</span>Landscaping</div>
       </div>
-      <div class="stucco-scope" id="stucco-scope">
-        <h3>Stucco — what stage do you need?</h3>
-        <p>All-inclusive pricing: labour, materials, flashings, scaffolding &amp; equipment.</p>
-        <label class="scope-opt"><input type="radio" name="stucco-scope" value="3.00" data-label="Paper &amp; wire"/><span><b>Paper &amp; wire</b><small>2 layers building paper, stucco wire, flashings</small></span><em>$3.00/sq ft</em></label>
-        <label class="scope-opt"><input type="radio" name="stucco-scope" value="6.22" data-label="Paper, wire &amp; scratch coat" checked/><span><b>Paper, wire &amp; scratch coat</b><small>Ready for brown coat &amp; finish later</small></span><em>$6.22/sq ft</em></label>
-        <label class="scope-opt"><input type="radio" name="stucco-scope" value="6.00" data-label="Brown coat + textured acrylic"/><span><b>Brown coat + textured acrylic</b><small>Over an existing scratch coat</small></span><em>$6.00/sq ft</em></label>
-        <label class="scope-opt"><input type="radio" name="stucco-scope" value="7.11" data-label="Brown coat + smooth acrylic"/><span><b>Brown coat + smooth acrylic</b><small>Over an existing scratch coat</small></span><em>$7.11/sq ft</em></label>
-        <label class="scope-opt"><input type="radio" name="stucco-scope" value="12.22" data-label="Full system — textured acrylic"/><span><b>Full system — textured acrylic</b><small>Paper, wire, scratch, brown &amp; textured finish</small></span><em>$12.22/sq ft</em></label>
-        <label class="scope-opt"><input type="radio" name="stucco-scope" value="13.33" data-label="Full system — smooth acrylic"/><span><b>Full system — smooth acrylic</b><small>Paper, wire, scratch, brown &amp; smooth finish</small></span><em>$13.33/sq ft</em></label>
-      </div>
       <div class="qnav">
         <button class="btn-back-q" onclick="goStep(2)">← Back</button>
         <span class="step-indicator">Step 3 of 3</span>
@@ -258,10 +237,10 @@ footer{background:var(--black);color:#fff;padding:40px 24px 28px}
       </div>
       <div class="result-grid" id="result-rows"></div>
       <div class="result-total">
-        <div><div class="label" id="result-total-label">Estimated total range</div><div class="amount" id="result-total-amt"></div></div>
-        <div style="font-size:12px;color:#6b7280;text-align:right" id="result-basis">Labour only<br/>Materials quoted separately</div>
+        <div><div class="label">Estimated total range</div><div class="amount" id="result-total-amt"></div></div>
+        <div style="font-size:12px;color:#6b7280;text-align:right">Labour only<br/>Materials quoted separately</div>
       </div>
-      <div class="result-note" id="result-note">
+      <div class="result-note">
         ⚠️ This estimate uses live 2026 Alberta labour rates and is typically within 10–15% of final invoice. It's a planning number — final pricing is confirmed after a site visit. Materials, permits, and GST are not included.
       </div>
       <div class="result-actions">
@@ -320,6 +299,39 @@ function goStep(n) {
   currentStep = n;
 }
 
+// ===== Stucco stage pricing (all-inclusive) =====
+const STUCCO_SCOPES = [
+  ['3.00', 'Paper & wire', '2 layers building paper, stucco wire, flashings'],
+  ['6.22', 'Paper, wire & scratch coat', 'Ready for brown coat & finish later'],
+  ['6.00', 'Brown coat + textured acrylic', 'Over an existing scratch coat'],
+  ['7.11', 'Brown coat + smooth acrylic', 'Over an existing scratch coat'],
+  ['12.22', 'Full system — textured acrylic', 'Paper, wire, scratch, brown & textured finish'],
+  ['13.33', 'Full system — smooth acrylic', 'Paper, wire, scratch, brown & smooth finish']
+];
+
+(function setupStucco() {
+  const css = document.createElement('style');
+  css.textContent = `
+.stucco-scope{display:none;margin:-8px 0 24px;padding:18px;border:1.5px solid var(--orange);border-radius:12px;background:rgba(244,96,12,.04)}
+.stucco-scope.show{display:block}
+.stucco-scope h3{font-size:15px;font-weight:800;color:var(--black);margin-bottom:2px}
+.stucco-scope p{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.scope-opt{display:flex;align-items:center;gap:12px;padding:11px 12px;background:#fff;border:1.5px solid var(--border);border-radius:var(--r);margin-top:8px;cursor:pointer;font-size:13px}
+.scope-opt:has(input:checked){border-color:var(--orange)}
+.scope-opt input{accent-color:var(--orange);flex:none}
+.scope-opt span{flex:1;display:flex;flex-direction:column}
+.scope-opt small{color:var(--muted);font-size:12px}
+.scope-opt em{font-style:normal;font-weight:800;color:var(--orange);white-space:nowrap}
+@media(max-width:520px){.result-row{grid-template-columns:1fr auto}.result-rate{grid-column:1/-1}}`;
+  document.head.appendChild(css);
+  const box = document.createElement('div');
+  box.className = 'stucco-scope';
+  box.id = 'stucco-scope';
+  box.innerHTML = '<h3>Stucco — what stage do you need?</h3><p>All-inclusive pricing: labour, materials, flashings, scaffolding &amp; equipment.</p>' +
+    STUCCO_SCOPES.map((s, i) => `<label class="scope-opt"><input type="radio" name="stucco-scope" value="${s[0]}" data-label="${s[1]}"${i === 1 ? ' checked' : ''}/><span><b>${s[1]}</b><small>${s[2]}</small></span><em>$${s[0]}/sq ft</em></label>`).join('');
+  document.querySelector('.trade-select').after(box);
+})();
+
 function toggleTrade(el) {
   el.classList.toggle('selected');
   const stucco = document.querySelector('.trade-opt[data-trade="Stucco / EIFS"]');
@@ -350,11 +362,10 @@ function generateQuote() {
 function buildResults(selected) {
   const sqft = parseInt(document.getElementById('q-sqft').value) || 200;
   const hours = Math.max(4, Math.round(sqft / 40));
-  let totalLow = 0, totalHigh = 0;
+  let totalLow = 0, totalHigh = 0, stuccoPicked = false;
   const rows = document.getElementById('result-rows');
   rows.innerHTML = '';
 
-  let stuccoPicked = false;
   selected.forEach(el => {
     const trade = el.dataset.trade;
     if (trade === 'Stucco / EIFS') {
@@ -386,15 +397,17 @@ function buildResults(selected) {
       </div>`;
   });
 
-  document.getElementById('result-total-amt').innerHTML = totalLow === totalHigh
+  const single = totalLow === totalHigh;
+  const onlyStucco = stuccoPicked && selected.length === 1;
+  const amtEl = document.getElementById('result-total-amt');
+  amtEl.innerHTML = single
     ? `$${totalLow.toLocaleString()} <span style="font-size:15px;letter-spacing:0">+ GST</span>`
     : `$${totalLow.toLocaleString()} – $${totalHigh.toLocaleString()}`;
-  const onlyStucco = stuccoPicked && selected.length === 1;
-  document.getElementById('result-total-label').textContent = totalLow === totalHigh ? 'Estimated total' : 'Estimated total range';
-  document.getElementById('result-basis').innerHTML = onlyStucco
+  amtEl.previousElementSibling.textContent = single ? 'Estimated total' : 'Estimated total range';
+  document.querySelector('.result-total > div:last-child').innerHTML = onlyStucco
     ? 'All-inclusive<br/>Labour, materials &amp; scaffolding'
     : (stuccoPicked ? 'Stucco all-inclusive<br/>Other trades labour only' : 'Labour only<br/>Materials quoted separately');
-  document.getElementById('result-note').innerHTML = stuccoPicked
+  document.querySelector('.result-note').innerHTML = stuccoPicked
     ? '⚠️ Stucco pricing is all-inclusive: labour, materials, flashings, scaffolding and equipment, based on the wall square footage you entered. ' + (onlyStucco ? '' : 'Other trades use live 2026 Alberta labour rates (labour only). ') + 'Final pricing is confirmed after a site visit. Permits and GST are not included.'
     : '⚠️ This estimate uses live 2026 Alberta labour rates and is typically within 10–15% of final invoice. It\'s a planning number — final pricing is confirmed after a site visit. Materials, permits, and GST are not included.';
   document.getElementById('results').classList.add('active');
