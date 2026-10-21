@@ -1,6 +1,11 @@
 [build]
   publish = "."
 
+[build.environment]
+  # A short PIN matches ordinary numbers in the site files and makes
+  # Netlify's secret scanner block every build, so skip scanning for it.
+  SECRETS_SCAN_OMIT_KEYS = "GALLERY_UPLOAD_PIN"
+
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
