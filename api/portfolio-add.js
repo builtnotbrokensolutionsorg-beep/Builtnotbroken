@@ -8,7 +8,7 @@ const IMGBB_KEY   = process.env.IMGBB_API_KEY;
 const GH_TOKEN    = process.env.GITHUB_TOKEN;
 const GH_REPO     = 'builtnotbrokensolutionsorg-beep/Builtnotbroken';
 const DATA_PATH   = 'data/portfolio.json';
-const UPLOAD_PIN  = process.env.GALLERY_UPLOAD_PIN || '0509';
+const UPLOAD_PIN  = process.env.GALLERY_UPLOAD_PIN;
 
 function stripDataUri(str) {
   return str.includes(',') ? str.split(',')[1] : str;
@@ -72,8 +72,8 @@ export default async function handler(req) {
   try {
     const { title, desc, location, before, after, pin } = await req.json();
 
-    // PIN check (allow server-side or client-side pre-check)
-    if (pin && pin !== UPLOAD_PIN) {
+    // PIN must be set on the server and must match.
+    if (!UPLOAD_PIN || !pin || pin !== UPLOAD_PIN) {
       return new Response(JSON.stringify({ error: 'Invalid PIN' }), { status: 403 });
     }
 

@@ -331,7 +331,7 @@
 <div id="toast"></div>
 
 <script>
-const PIN = '0509';
+let enteredPin = '';
 const DATA_URL = 'https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/data/portfolio.json';
 
 function showToast(msg, ok=true){
@@ -345,12 +345,11 @@ function toggleUpload(){
 }
 
 function checkPin(){
-  if(document.getElementById('upload-pin').value === PIN){
-    document.getElementById('pin-step').style.display = 'none';
-    document.getElementById('upload-step').style.display = 'block';
-  } else {
-    showToast('Incorrect PIN', false);
-  }
+  // The server checks the PIN when you upload; it's never stored in this page.
+  enteredPin = document.getElementById('upload-pin').value.trim();
+  if(!enteredPin){ showToast('Enter your PIN', false); return; }
+  document.getElementById('pin-step').style.display = 'none';
+  document.getElementById('upload-step').style.display = 'block';
 }
 
 function compressImage(file, maxDim=1280, quality=0.75){
@@ -401,7 +400,7 @@ async function uploadJob(){
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        title, desc, location,
+        title, desc, location, pin: enteredPin,
         before: { data: beforeData, name: beforeFile.name, type: 'image/jpeg' },
         after: { data: afterData, name: afterFile.name, type: 'image/jpeg' }
       })
