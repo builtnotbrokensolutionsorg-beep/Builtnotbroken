@@ -554,7 +554,7 @@ async function getAIQuote(){
     if(!response.ok)throw new Error(data.error||'Quote request failed');
     const text=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n')||'No estimate returned — please call 403-470-9749.';
     resultEl.textContent=text;resultEl.classList.add('show');
-    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'quote',name,phone:contact,email:contact,message:desc,trade:trades.join(', '),photos})}).catch(()=>{});
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'quote',name,phone:(contact.includes('@')?'':contact),email:(contact.includes('@')?contact:''),message:desc,trade:trades.join(', '),photos})}).catch(()=>{});
     saveLead({type:'quote',name:name||'(no name)',trade:trades.join(', ')});
     showToast('✅ Quote generated — we\'ve also logged your request.');
   }catch(err){
