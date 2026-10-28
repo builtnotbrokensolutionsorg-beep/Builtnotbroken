@@ -1,5 +1,61 @@
 [
   {
+    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/flashing-after-house.jpg",
+    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-flashing-after-house.jpg",
+    "caption": "Window Flashing Replacement – Whole House, Complete (after)",
+    "trade": "Flashing",
+    "date": "2026-10-28T17:30:00.000Z"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/window-trim-1.jpg",
+    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-window-trim-1.jpg",
+    "caption": "Window Flashing Replacement – Finished, Head Flashing Properly Fastened (after)",
+    "trade": "Flashing",
+    "date": "2026-07-09T16:00:00.000Z"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/flashing-before-1.jpg",
+    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-flashing-before-1.jpg",
+    "caption": "Window Flashing Replacement – Before: Flashing Only Taped, Never Fastened = Water Intrusion",
+    "trade": "Flashing",
+    "date": "2026-10-28T17:30:00.000Z"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/flashing-before-2.jpg",
+    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-flashing-before-2.jpg",
+    "caption": "Window Flashing Replacement – Before: Taped-On Flashing Close-Up",
+    "trade": "Flashing",
+    "date": "2026-10-28T17:30:00.000Z"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/flashing-before-3.jpg",
+    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-flashing-before-3.jpg",
+    "caption": "Window Flashing Replacement – Before: Torn Paper Behind Unfastened Flashing",
+    "trade": "Flashing",
+    "date": "2026-10-28T17:30:00.000Z"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/flashing-progress-1.jpg",
+    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-flashing-progress-1.jpg",
+    "caption": "Window Flashing Replacement – Stucco Cut Back, Masked For Repair",
+    "trade": "Flashing",
+    "date": "2026-10-28T17:30:00.000Z"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/flashing-progress-2.jpg",
+    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-flashing-progress-2.jpg",
+    "caption": "Window Flashing Replacement – New Flashing In, Stucco Patched",
+    "trade": "Flashing",
+    "date": "2026-10-28T17:30:00.000Z"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/flashing-progress-3.jpg",
+    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-flashing-progress-3.jpg",
+    "caption": "Window Flashing Replacement – Patch Above Windows Before Texture Match",
+    "trade": "Flashing",
+    "date": "2026-10-28T17:30:00.000Z"
+  },
+  {
     "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/springbank-after-1.jpg",
     "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-springbank-after-1.jpg",
     "caption": "Springbank Restoration – Finished Walkout Patio Level (after)",
@@ -54,13 +110,6 @@
     "caption": "New-build exterior – stucco and stone finish, Calgary (photo 4 of 4)",
     "trade": "Stucco & Stone",
     "date": "2025-05-02T18:00:00.000Z"
-  },
-  {
-    "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/window-trim-1.jpg",
-    "thumb": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/thumb-window-trim-1.jpg",
-    "caption": "Stucco finish around window trim – finished exterior detail",
-    "trade": "Stucco",
-    "date": "2026-07-09T16:00:00.000Z"
   },
   {
     "url": "https://raw.githubusercontent.com/builtnotbrokensolutionsorg-beep/Builtnotbroken/main/images/oak-hardwood-bedroom.jpg",
@@ -145,12 +194,5 @@
     "caption": "Parging Repair N.w",
     "trade": "Concrete",
     "date": "2026-08-18T19:21:56.937Z"
-  },
-  {
-    "url": "https://i.ibb.co/sd7RbC6y/1802-jpg.jpg",
-    "thumb": "https://i.ibb.co/rR90F3c4/1802-jpg.jpg",
-    "caption": "Flashing Replacement, Texture finish, Acrylics painted",
-    "trade": "Stucco & EIFS",
-    "date": "2026-08-16T15:31:30.690Z"
   }
 ]
